@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold text-gray-900;
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-secondary {
+    @apply inline-flex min-h-11 items-center justify-center rounded-md px-5 text-sm font-semibold transition duration-200 focus:outline-none focus:ring-2 focus:ring-slate-300 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-slate-950 text-white shadow-sm hover:bg-slate-800;
+  }
+
+  .btn-secondary {
+    @apply border border-slate-300 bg-white text-slate-950 hover:border-slate-400 hover:bg-slate-50;
+  }
+}
+
+@layer base {
+  :where(a, button, input, textarea, select):focus {
+    outline: none !important;
+    --tw-ring-offset-shadow: 0 0 #0000 !important;
+    --tw-ring-shadow: 0 0 #0000 !important;
+  }
+
+  :where(a, button, input, textarea, select):focus-visible {
+    box-shadow: none !important;
+  }
+
+  :where(a, button):focus-visible {
+    text-decoration-line: underline;
+    text-decoration-color: rgb(15 23 42);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  :where(button:not(.btn-primary):not(.btn-secondary)):focus-visible {
+    color: rgb(100 116 139);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

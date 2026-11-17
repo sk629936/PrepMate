@@ -114,6 +114,17 @@ function Dashboard() {
               {(user.fullName || 'U').charAt(0).toUpperCase()}
             </div>
 
+            {user.role === 'admin' && (
+              <a
+                href="/admin"
+                id="dashboard-admin-panel-link"
+                className="btn-secondary !min-h-9 !py-1.5 !px-3 text-xs hidden sm:inline-flex"
+                aria-label="Open Admin Panel"
+              >
+                Admin Panel
+              </a>
+            )}
+
             <button
               type="button"
               onClick={logout}
@@ -194,18 +205,25 @@ function Dashboard() {
             {/* Metric 3 */}
             <div className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
               <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                Aptitude Tests
+                Aptitude Assessment
               </div>
               <div className="mt-2 flex items-baseline gap-2">
-                <span className="text-3xl font-bold tracking-tight text-slate-950">{dashboardData?.progress?.aptitude?.testsCompleted || 0}</span>
-                {(!dashboardData?.progress?.aptitude?.testsCompleted || dashboardData.progress.aptitude.testsCompleted === 0) ? (
-                  <span className="text-xs text-slate-500">No activity yet</span>
+                <span className="text-3xl font-bold tracking-tight text-slate-950">
+                  {dashboardData?.progress?.aptitude?.attempted || 0}
+                </span>
+                {(!dashboardData?.progress?.aptitude?.attempted || dashboardData.progress.aptitude.attempted === 0) ? (
+                  <span className="text-xs text-slate-500">0% Accuracy · No activity yet</span>
                 ) : (
-                  <span className="text-xs text-slate-500">/ 150 Solved</span>
+                  <span className="text-xs text-slate-500">
+                    Attempted · {dashboardData?.progress?.aptitude?.accuracy || 0}% Accuracy
+                  </span>
                 )}
               </div>
               <div className="mt-3 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                <div className="h-full bg-slate-400 rounded-full transition-all duration-500" style={{ width: `${Math.min(((dashboardData?.progress?.aptitude?.testsCompleted || 0) / 150) * 100, 100)}%` }} />
+                <div
+                  className="h-full bg-slate-900 rounded-full transition-all duration-500"
+                  style={{ width: `${Math.min(dashboardData?.progress?.aptitude?.accuracy || 0, 100)}%` }}
+                />
               </div>
             </div>
 
@@ -332,18 +350,17 @@ function Dashboard() {
               </div>
 
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs text-slate-500 font-medium">Coming in next module</span>
-                <button
-                  type="button"
-                  disabled
-                  className="btn-secondary !min-h-9 !py-1.5 !px-4 text-xs opacity-60 cursor-not-allowed"
+                <span className="text-xs text-slate-500 font-medium">Start your Core CS preparation</span>
+                <a
+                  href="/core-cs"
+                  className="btn-secondary !min-h-9 !py-1.5 !px-4 text-xs font-medium bg-slate-900 text-white hover:bg-slate-800 rounded-md transition-colors inline-flex items-center justify-center"
                 >
-                  Review Notes
-                </button>
+                  Start Core CS
+                </a>
               </div>
             </div>
 
-            {/* Category 4: AI Mock Interview */}
+            {/* Category 4: Mock Interview */}
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between">
@@ -351,34 +368,73 @@ function Dashboard() {
                     Module 04
                   </span>
                   <span className="rounded border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs text-slate-600">
-                    AI Guided
+                    Interviews
                   </span>
                 </div>
                 <h3 className="mt-3 text-xl font-semibold text-slate-950">
-                  AI Mock Interviews
+                  Mock Interviews
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                  Interactive real-time mock interviews with adaptive technical questions, communication feedback, and resume review.
+                  Structured technical and HR interview rounds with difficulty customization, objective rubric evaluation, and detailed analytics.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-500">
-                  <span className="rounded bg-slate-100 px-2.5 py-1">Technical HR</span>
-                  <span className="rounded bg-slate-100 px-2.5 py-1">Behavioral</span>
-                  <span className="rounded bg-slate-100 px-2.5 py-1">System Design</span>
+                  <span className="rounded bg-slate-100 px-2.5 py-1">Technical</span>
+                  <span className="rounded bg-slate-100 px-2.5 py-1">HR &amp; Behavioral</span>
+                  <span className="rounded bg-slate-100 px-2.5 py-1">Mixed Rounds</span>
                 </div>
               </div>
 
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs text-slate-500 font-medium">Coming in next module</span>
-                <button
-                  type="button"
-                  disabled
-                  className="btn-secondary !min-h-9 !py-1.5 !px-4 text-xs opacity-60 cursor-not-allowed"
+                <span className="text-xs text-slate-500 font-medium">Practice &amp; Calibration</span>
+                <a
+                  href="/mock-interview"
+                  className="btn-secondary !min-h-9 !py-1.5 !px-4 text-xs font-medium bg-slate-900 text-white hover:bg-slate-800 rounded-md transition-colors inline-flex items-center justify-center"
                 >
-                  Start Simulation
-                </button>
+                  Start Mock Interview
+                </a>
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Recent Aptitude Activity Section */}
+        <section aria-labelledby="recent-activity-heading" className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 id="recent-activity-heading" className="text-base font-semibold text-slate-950">
+                Recent Aptitude Activity
+              </h2>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Real-time tracking of your practice drills and full placement assessment evaluations.
+              </p>
+            </div>
+            <a href="/aptitude/practice" className="btn-secondary !min-h-8 !py-1 !px-3 text-xs font-semibold">
+              Practice Now →
+            </a>
+          </div>
+
+          {(!dashboardData?.progress?.aptitude?.recentActivity || dashboardData.progress.aptitude.recentActivity.length === 0) ? (
+            <div className="rounded-lg border border-dashed border-slate-200 bg-slate-50/50 p-6 text-center">
+              <p className="text-xs text-slate-500 font-medium">
+                No aptitude assessments completed yet. Take your first practice drill or timed test to view results here.
+              </p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              {dashboardData.progress.aptitude.recentActivity.map((act, idx) => (
+                <div key={idx} className="p-3.5 rounded-lg border border-slate-200 bg-slate-50 space-y-1.5">
+                  <div className="text-xs font-bold text-slate-900 truncate">{act.title || 'Aptitude Assessment'}</div>
+                  <div className="flex items-baseline justify-between text-xs">
+                    <span className="font-semibold text-slate-950">Score: {act.score} / {act.totalQuestions}</span>
+                    <span className="font-bold text-slate-700 bg-white border border-slate-200 px-1.5 py-0.5 rounded text-[10px]">{act.accuracy}% Acc</span>
+                  </div>
+                  <div className="text-[10px] text-slate-400">
+                    {new Date(act.createdAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Next Suggested Action / Empty State */}

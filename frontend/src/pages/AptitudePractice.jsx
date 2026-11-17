@@ -32,9 +32,25 @@ function AptitudePractice() {
 
   // Filters state initialized from URL query params if present
   const queryParams = new URLSearchParams(window.location.search)
-  const [selectedCategory, setSelectedCategory] = useState(queryParams.get('category') || 'Quantitative Aptitude')
-  const [selectedChapter, setSelectedChapter] = useState(queryParams.get('chapter') || '')
-  const [selectedDifficulty, setSelectedDifficulty] = useState('')
+  const queryChapter = queryParams.get('chapter') || ''
+  const queryCategory = queryParams.get('category')
+  const queryDifficulty = queryParams.get('difficulty') || ''
+
+  // Automatically resolve category if only chapter is provided (e.g. from Practice Weak Topic)
+  let initialCategory = queryCategory || 'Quantitative Aptitude'
+  if (!queryCategory && queryChapter) {
+    if (CHAPTERS_BY_CATEGORY['Logical Reasoning'].includes(queryChapter)) {
+      initialCategory = 'Logical Reasoning'
+    } else if (CHAPTERS_BY_CATEGORY['Verbal Ability'].includes(queryChapter)) {
+      initialCategory = 'Verbal Ability'
+    } else if (CHAPTERS_BY_CATEGORY['Quantitative Aptitude'].includes(queryChapter)) {
+      initialCategory = 'Quantitative Aptitude'
+    }
+  }
+
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory)
+  const [selectedChapter, setSelectedChapter] = useState(queryChapter)
+  const [selectedDifficulty, setSelectedDifficulty] = useState(queryDifficulty)
 
   // Questions stream & active question
   const [questions, setQuestions] = useState([])

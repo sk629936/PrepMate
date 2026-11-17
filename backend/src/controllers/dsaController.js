@@ -1,5 +1,7 @@
 import User from '../models/User.js';
-import { topics, problems, getProblemById, getSafeProblemData } from '../data/dsaProblems.js';
+import DSAProblem from '../models/DSAProblem.js';
+import { topics, problems as staticProblems, getProblemById as getStaticProblemById, getSafeProblemData } from '../data/dsaProblems.js';
+import { seedDSAProblemsIfEmpty } from '../data/seedDSAProblems.js';
 
 // Scoring weights: Easy = 1, Medium = 2, Hard = 3
 const DIFFICULTY_WEIGHTS = {
@@ -9,19 +11,48 @@ const DIFFICULTY_WEIGHTS = {
 };
 
 /**
+ * Fetch all active and published problems from MongoDB, fallback to static if needed
+ */
+async function getActivePublishedProblems() {
+  try {
+    await seedDSAProblemsIfEmpty();
+    const dbProblems = await DSAProblem.find({ isPublished: true, isActive: true }).sort({ order: 1, createdAt: 1 }).lean();
+    if (dbProblems && dbProblems.length > 0) {
+      return dbProblems;
+    }
+  } catch (err) {
+    console.warn('Database query for DSA problems failed, using static catalog fallback:', err.message);
+  }
+  return staticProblems;
+}
+
+/**
+ * Fetch a single problem by ID from MongoDB, fallback to static
+ */
+async function findProblemById(problemId) {
+  try {
+    const p = await DSAProblem.findOne({ id: problemId, isPublished: true, isActive: true }).lean();
+    if (p) return p;
+  } catch {
+    // fallback
+  }
+  return getStaticProblemById(problemId);
+}
+
+/**
  * Calculate max possible score across all active problems
  */
-
-export const calculateMaxScore = () => {
-  return problems.reduce((acc, p) => acc + (DIFFICULTY_WEIGHTS[p.difficulty] || 1), 0);
+export const calculateMaxScore = (problemList = staticProblems) => {
+  return problemList.reduce((acc, p) => acc + (DIFFICULTY_WEIGHTS[p.difficulty] || 1), 0);
 };
 
 /**
  * Calculate user score based on solved problem IDs
  */
-export const calculateUserScore = (solvedProblemIds = []) => {
+export const calculateUserScore = (solvedProblemIds = [], problemList = staticProblems) => {
+  const problemMap = new Map(problemList.map((p) => [p.id, p]));
   return solvedProblemIds.reduce((acc, id) => {
-    const problem = getProblemById(id);
+    const problem = problemMap.get(id) || getStaticProblemById(id);
     if (problem) {
       return acc + (DIFFICULTY_WEIGHTS[problem.difficulty] || 1);
     }
@@ -43,13 +74,15 @@ export const getDSAData = async (req, res) => {
     const dsaProgress = user.progress?.dsa || { solved: 0, solvedProblems: [] };
     const solvedProblemIds = dsaProgress.solvedProblems || [];
 
+    const problems = await getActivePublishedProblems();
+
     // Safe problem dataset for frontend
     const safeProblems = problems.map(getSafeProblemData);
 
     // Compute topic progress from actual problem data
-    const topicsWithCounts = topics.map(t => {
-      const topicProblems = problems.filter(p => p.topic === t.id);
-      const solvedCount = topicProblems.filter(p => solvedProblemIds.includes(p.id)).length;
+    const topicsWithCounts = topics.map((t) => {
+      const topicProblems = problems.filter((p) => p.topic === t.id);
+      const solvedCount = topicProblems.filter((p) => solvedProblemIds.includes(p.id)).length;
       return {
         ...t,
         totalProblems: topicProblems.length,
@@ -60,22 +93,22 @@ export const getDSAData = async (req, res) => {
     // Compute difficulty stats
     const difficultyStats = {
       Easy: {
-        total: problems.filter(p => p.difficulty === 'Easy').length,
-        solved: problems.filter(p => p.difficulty === 'Easy' && solvedProblemIds.includes(p.id)).length,
+        total: problems.filter((p) => p.difficulty === 'Easy').length,
+        solved: problems.filter((p) => p.difficulty === 'Easy' && solvedProblemIds.includes(p.id)).length,
       },
       Medium: {
-        total: problems.filter(p => p.difficulty === 'Medium').length,
-        solved: problems.filter(p => p.difficulty === 'Medium' && solvedProblemIds.includes(p.id)).length,
+        total: problems.filter((p) => p.difficulty === 'Medium').length,
+        solved: problems.filter((p) => p.difficulty === 'Medium' && solvedProblemIds.includes(p.id)).length,
       },
       Hard: {
-        total: problems.filter(p => p.difficulty === 'Hard').length,
-        solved: problems.filter(p => p.difficulty === 'Hard' && solvedProblemIds.includes(p.id)).length,
+        total: problems.filter((p) => p.difficulty === 'Hard').length,
+        solved: problems.filter((p) => p.difficulty === 'Hard' && solvedProblemIds.includes(p.id)).length,
       },
     };
 
     // Calculate score
-    const maxScore = calculateMaxScore();
-    const userScore = calculateUserScore(solvedProblemIds);
+    const maxScore = calculateMaxScore(problems);
+    const userScore = calculateUserScore(solvedProblemIds, problems);
 
     const totalProblems = problems.length;
     const solvedCount = solvedProblemIds.length;
@@ -110,7 +143,7 @@ export const getDSAData = async (req, res) => {
 export const getProblem = async (req, res) => {
   try {
     const { problemId } = req.params;
-    const problem = getProblemById(problemId);
+    const problem = await findProblemById(problemId);
 
     if (!problem) {
       return res.status(404).json({ success: false, error: 'Problem not found' });
@@ -143,7 +176,7 @@ export const markProblemSolved = async (req, res) => {
       return res.status(400).json({ success: false, error: 'Problem ID is required' });
     }
 
-    const problem = getProblemById(problemId);
+    const problem = await findProblemById(problemId);
     if (!problem) {
       return res.status(404).json({ success: false, error: 'Invalid problem ID' });
     }
@@ -160,25 +193,26 @@ export const markProblemSolved = async (req, res) => {
     if (!user.progress.dsa.solvedProblems.includes(problemId)) {
       user.progress.dsa.solvedProblems.push(problemId);
       user.progress.dsa.solved = user.progress.dsa.solvedProblems.length;
-      
-      // Update overall progress percentage
-      const totalProblems = problems.length;
+
+      const activeProblems = await getActivePublishedProblems();
+      const totalProblems = activeProblems.length;
       user.progress.overall = totalProblems > 0 ? Math.round((user.progress.dsa.solved / totalProblems) * 100) : 0;
-      
+
       await user.save();
     }
 
+    const activeProblems = await getActivePublishedProblems();
     const solvedProblemIds = user.progress.dsa.solvedProblems;
-    const maxScore = calculateMaxScore();
-    const userScore = calculateUserScore(solvedProblemIds);
-    const progressPercent = Math.round((solvedProblemIds.length / problems.length) * 100);
+    const maxScore = calculateMaxScore(activeProblems);
+    const userScore = calculateUserScore(solvedProblemIds, activeProblems);
+    const progressPercent = activeProblems.length > 0 ? Math.round((solvedProblemIds.length / activeProblems.length) * 100) : 0;
 
     res.status(200).json({
       success: true,
       message: 'Problem marked as solved',
       progress: {
         solved: solvedProblemIds.length,
-        total: problems.length,
+        total: activeProblems.length,
         progressPercent,
         solvedProblems: solvedProblemIds,
         score: {
@@ -204,7 +238,7 @@ export const markProblemUnsolved = async (req, res) => {
       return res.status(400).json({ success: false, error: 'Problem ID is required' });
     }
 
-    const problem = getProblemById(problemId);
+    const problem = await findProblemById(problemId);
     if (!problem) {
       return res.status(404).json({ success: false, error: 'Invalid problem ID' });
     }
@@ -222,24 +256,26 @@ export const markProblemUnsolved = async (req, res) => {
     if (index > -1) {
       user.progress.dsa.solvedProblems.splice(index, 1);
       user.progress.dsa.solved = user.progress.dsa.solvedProblems.length;
-      
-      const totalProblems = problems.length;
+
+      const activeProblems = await getActivePublishedProblems();
+      const totalProblems = activeProblems.length;
       user.progress.overall = totalProblems > 0 ? Math.round((user.progress.dsa.solved / totalProblems) * 100) : 0;
 
       await user.save();
     }
 
+    const activeProblems = await getActivePublishedProblems();
     const solvedProblemIds = user.progress.dsa.solvedProblems || [];
-    const maxScore = calculateMaxScore();
-    const userScore = calculateUserScore(solvedProblemIds);
-    const progressPercent = Math.round((solvedProblemIds.length / problems.length) * 100);
+    const maxScore = calculateMaxScore(activeProblems);
+    const userScore = calculateUserScore(solvedProblemIds, activeProblems);
+    const progressPercent = activeProblems.length > 0 ? Math.round((solvedProblemIds.length / activeProblems.length) * 100) : 0;
 
     res.status(200).json({
       success: true,
       message: 'Problem marked as unsolved',
       progress: {
         solved: solvedProblemIds.length,
-        total: problems.length,
+        total: activeProblems.length,
         progressPercent,
         solvedProblems: solvedProblemIds,
         score: {

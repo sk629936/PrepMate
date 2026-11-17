@@ -1,958 +1,2412 @@
-﻿/**
- * High-quality placement-oriented seed question bank.
- * 80 verified questions across Quantitative Aptitude, Logical Reasoning, and Verbal Ability.
- * Based on common patterns seen in placement assessments for IT/product companies.
- * All math calculations and answers are strictly verified.
+/**
+ * Complete placement-oriented seed question bank covering all 73 chapters.
+ * All math calculations and answers strictly verified.
  */
 
 export const seedQuestions = [
-
-  // --- QUANTITATIVE APTITUDE ---
   {
-    question: "A worker's salary was increased by 20% and then subsequently decreased by 20%. What is the net percentage change in his overall salary?",
-    options: ["No change", "4% decrease", "4% increase", "2% decrease"],
-    correctAnswerIndex: 1,
-    explanation: "Let initial salary = 100. After 20% increase = 100 * 1.20 = 120. After 20% decrease = 120 * 0.80 = 96. Net change = 96 - 100 = -4, which is a 4% decrease. Formula: Net change = -xÂ²/100 = -400/100 = -4%.",
-    category: "Quantitative Aptitude",
-    chapter: "Percentages",
-    topic: "Successive Percentage Change",
-    difficulty: "Easy",
-    patternTags: ["percentage-change", "arithmetic"],
-    companyPatternReferences: ["TCS NQT", "Infosys", "Wipro"],
-    isPublished: true,
+    "question": "A worker's salary was increased by 20% and then subsequently decreased by 20%. What is the net percentage change in his overall salary?",
+    "options": [
+      "No change",
+      "4% decrease",
+      "4% increase",
+      "2% decrease"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Let initial salary = 100. After 20% increase = 100 * 1.20 = 120. After 20% decrease = 120 * 0.80 = 96. Net change = 96 - 100 = -4, which is a 4% decrease. Formula: Net change = -x²/100 = -400/100 = -4%.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Percentages",
+    "topic": "Successive Percentage Change",
+    "difficulty": "Easy",
+    "patternTags": [
+      "percentage-change",
+      "arithmetic"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Infosys",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "A and B together can complete a piece of work in 12 days. B alone can finish the same work in 30 days. In how many days can A alone complete the work?",
-    options: ["18 days", "20 days", "22 days", "25 days"],
-    correctAnswerIndex: 1,
-    explanation: "A and B's 1-day work = 1/12. B's 1-day work = 1/30. A's 1-day work = (1/12) - (1/30) = (5 - 2)/60 = 3/60 = 1/20. Therefore, A alone takes 20 days to finish the work.",
-    category: "Quantitative Aptitude",
-    chapter: "Time and Work",
-    topic: "Individual vs Combined Work Rate",
-    difficulty: "Medium",
-    patternTags: ["work-rate", "arithmetic"],
-    companyPatternReferences: ["Accenture", "Cognizant", "Capgemini"],
-    isPublished: true,
+    "question": "A and B together can complete a piece of work in 12 days. B alone can finish the same work in 30 days. In how many days can A alone complete the work?",
+    "options": [
+      "18 days",
+      "20 days",
+      "22 days",
+      "25 days"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "A and B's 1-day work = 1/12. B's 1-day work = 1/30. A's 1-day work = (1/12) - (1/30) = (5 - 2)/60 = 3/60 = 1/20. Therefore, A alone takes 20 days to finish the work.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Time and Work",
+    "topic": "Individual vs Combined Work Rate",
+    "difficulty": "Medium",
+    "patternTags": [
+      "work-rate",
+      "arithmetic"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Cognizant",
+      "Capgemini"
+    ],
+    "isPublished": true
   },
   {
-    question: "A train running at a speed of 72 km/h passes a telegraph pole in 15 seconds. Find the length of the train in meters.",
-    options: ["250 m", "300 m", "320 m", "350 m"],
-    correctAnswerIndex: 1,
-    explanation: "Speed in m/s = 72 * (5/18) = 20 m/s. Length of train = Speed * Time taken to cross pole = 20 m/s * 15 s = 300 meters.",
-    category: "Quantitative Aptitude",
-    chapter: "Problems on Trains",
-    topic: "Stationary Object Crossing",
-    difficulty: "Easy",
-    patternTags: ["speed-distance", "unit-conversion"],
-    companyPatternReferences: ["TCS", "HCLTech", "Tech Mahindra"],
-    isPublished: true,
+    "question": "A train running at a speed of 72 km/h passes a telegraph pole in 15 seconds. Find the length of the train in meters.",
+    "options": [
+      "250 m",
+      "300 m",
+      "320 m",
+      "350 m"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Speed in m/s = 72 * (5/18) = 20 m/s. Length of train = Speed * Time taken to cross pole = 20 m/s * 15 s = 300 meters.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Problems on Trains",
+    "topic": "Stationary Object Crossing",
+    "difficulty": "Easy",
+    "patternTags": [
+      "speed-distance",
+      "unit-conversion"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "HCLTech",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
   },
   {
-    question: "Find the compound interest on â‚¹8,000 for 2 years at 10% per annum, compounded annually.",
-    options: ["â‚¹1,600", "â‚¹1,680", "â‚¹1,720", "â‚¹1,800"],
-    correctAnswerIndex: 1,
-    explanation: "Amount A = P(1 + R/100)^n = 8000 * (1 + 10/100)^2 = 8000 * 1.21 = â‚¹9,680. Compound Interest CI = A - P = 9680 - 8000 = â‚¹1,680.",
-    category: "Quantitative Aptitude",
-    chapter: "Compound Interest",
-    topic: "Annual Compounding",
-    difficulty: "Easy",
-    patternTags: ["interest-calculation", "formula-based"],
-    companyPatternReferences: ["Deloitte", "LTIMindtree"],
-    isPublished: true,
+    "question": "Find the compound interest on ₹8,000 for 2 years at 10% per annum, compounded annually.",
+    "options": [
+      "₹1,600",
+      "₹1,680",
+      "₹1,720",
+      "₹1,800"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Amount A = P(1 + R/100)^n = 8000 * (1 + 10/100)^2 = 8000 * 1.21 = ₹9,680. Compound Interest CI = A - P = 9680 - 8000 = ₹1,680.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Compound Interest",
+    "topic": "Annual Compounding",
+    "difficulty": "Easy",
+    "patternTags": [
+      "interest-calculation",
+      "formula-based"
+    ],
+    "companyPatternReferences": [
+      "Deloitte",
+      "LTIMindtree"
+    ],
+    "isPublished": true
   },
   {
-    question: "The ratio of ages of two friends P and Q is 4:5. Five years hence, the ratio of their ages will be 5:6. What is the present age of P?",
-    options: ["16 years", "20 years", "24 years", "25 years"],
-    correctAnswerIndex: 1,
-    explanation: "Let present ages of P and Q be 4x and 5x. After 5 years: (4x + 5)/(5x + 5) = 5/6. Cross-multiplying: 6(4x + 5) = 5(5x + 5) => 24x + 30 = 25x + 25 => x = 5. Present age of P = 4x = 4 * 5 = 20 years.",
-    category: "Quantitative Aptitude",
-    chapter: "Problems on Ages",
-    topic: "Linear Equation on Ages",
-    difficulty: "Medium",
-    patternTags: ["ratio-proportion", "algebraic-word-problem"],
-    companyPatternReferences: ["Persistent", "IBM"],
-    isPublished: true,
+    "question": "The ratio of ages of two friends P and Q is 4:5. Five years hence, the ratio of their ages will be 5:6. What is the present age of P?",
+    "options": [
+      "16 years",
+      "20 years",
+      "24 years",
+      "25 years"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Let present ages of P and Q be 4x and 5x. After 5 years: (4x + 5)/(5x + 5) = 5/6. Cross-multiplying: 6(4x + 5) = 5(5x + 5) => 24x + 30 = 25x + 25 => x = 5. Present age of P = 4x = 4 * 5 = 20 years.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Problems on Ages",
+    "topic": "Linear Equation on Ages",
+    "difficulty": "Medium",
+    "patternTags": [
+      "ratio-proportion",
+      "algebraic-word-problem"
+    ],
+    "companyPatternReferences": [
+      "Persistent",
+      "IBM"
+    ],
+    "isPublished": true
   },
   {
-    question: "By selling an article for â‚¹720, a shopkeeper loses 10%. At what price should he sell it to gain 20%?",
-    options: ["â‚¹840", "â‚¹900", "â‚¹960", "â‚¹980"],
-    correctAnswerIndex: 2,
-    explanation: "Selling Price SP1 = â‚¹720 at 10% loss => CP = 720 / 0.90 = â‚¹800. Desired SP for 20% gain = CP * 1.20 = 800 * 1.20 = â‚¹960.",
-    category: "Quantitative Aptitude",
-    chapter: "Profit and Loss",
-    topic: "Cost Price Recovery & Profit Target",
-    difficulty: "Medium",
-    patternTags: ["profit-loss", "percentage-application"],
-    companyPatternReferences: ["Accenture", "TCS Digital"],
-    isPublished: true,
+    "question": "By selling an article for ₹720, a shopkeeper loses 10%. At what price should he sell it to gain 20%?",
+    "options": [
+      "₹840",
+      "₹900",
+      "₹960",
+      "₹980"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Selling Price SP1 = ₹720 at 10% loss => CP = 720 / 0.90 = ₹800. Desired SP for 20% gain = CP * 1.20 = 800 * 1.20 = ₹960.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Profit and Loss",
+    "topic": "Cost Price Recovery & Profit Target",
+    "difficulty": "Medium",
+    "patternTags": [
+      "profit-loss",
+      "percentage-application"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "TCS Digital"
+    ],
+    "isPublished": true
   },
   {
-    question: "Find the HCF and LCM of 24 and 36 respectively.",
-    options: ["12 and 72", "6 and 72", "12 and 144", "8 and 72"],
-    correctAnswerIndex: 0,
-    explanation: "Prime factorizations: 24 = 2^3 * 3^1, 36 = 2^2 * 3^2. HCF = 2^2 * 3^1 = 12. LCM = 2^3 * 3^2 = 72.",
-    category: "Quantitative Aptitude",
-    chapter: "HCF and LCM",
-    topic: "Basic Factorization",
-    difficulty: "Easy",
-    patternTags: ["number-theory", "fundamentals"],
-    companyPatternReferences: ["Capgemini", "Wipro"],
-    isPublished: true,
+    "question": "Find the HCF and LCM of 24 and 36 respectively.",
+    "options": [
+      "12 and 72",
+      "6 and 72",
+      "12 and 144",
+      "8 and 72"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Prime factorizations: 24 = 2^3 * 3^1, 36 = 2^2 * 3^2. HCF = 2^2 * 3^1 = 12. LCM = 2^3 * 3^2 = 72.",
+    "category": "Quantitative Aptitude",
+    "chapter": "HCF and LCM",
+    "topic": "Basic Factorization",
+    "difficulty": "Easy",
+    "patternTags": [
+      "number-theory",
+      "fundamentals"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "In how many different ways can the letters of the word 'LEADING' be arranged such that the vowels always come together?",
-    options: ["360", "480", "720", "5040"],
-    correctAnswerIndex: 2,
-    explanation: "Word 'LEADING' has 7 letters: Vowels = E, A, I (3 vowels), Consonants = L, D, N, G (4 consonants). Treating 3 vowels as 1 single block, we have 4 consonants + 1 block = 5 units. These 5 units can be arranged in 5! = 120 ways. The 3 vowels within the block can be arranged among themselves in 3! = 6 ways. Total arrangements = 120 * 6 = 720 ways.",
-    category: "Quantitative Aptitude",
-    chapter: "Permutation and Combination",
-    topic: "Group Arrangement with Constraints",
-    difficulty: "Hard",
-    patternTags: ["combinatorics", "permutations"],
-    companyPatternReferences: ["Infosys SP", "TCS Digital"],
-    isPublished: true,
+    "question": "In how many different ways can the letters of the word 'LEADING' be arranged such that the vowels always come together?",
+    "options": [
+      "360",
+      "480",
+      "720",
+      "5040"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Word 'LEADING' has 7 letters: Vowels = E, A, I (3 vowels), Consonants = L, D, N, G (4 consonants). Treating 3 vowels as 1 single block, we have 4 consonants + 1 block = 5 units. These 5 units can be arranged in 5! = 120 ways. The 3 vowels within the block can be arranged among themselves in 3! = 6 ways. Total arrangements = 120 * 6 = 720 ways.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Permutation and Combination",
+    "topic": "Group Arrangement with Constraints",
+    "difficulty": "Hard",
+    "patternTags": [
+      "combinatorics",
+      "permutations"
+    ],
+    "companyPatternReferences": [
+      "Infosys SP",
+      "TCS Digital"
+    ],
+    "isPublished": true
   },
   {
-    question: "Two cards are drawn at random from a standard deck of 52 playing cards. What is the probability that both cards are Kings?",
-    options: ["1/221", "1/169", "1/26", "1/13"],
-    correctAnswerIndex: 0,
-    explanation: "Total ways to choose 2 cards from 52 = 52C2 = (52 * 51) / 2 = 1326. Ways to choose 2 Kings from 4 = 4C2 = 6. Probability = 6 / 1326 = 1 / 221.",
-    category: "Quantitative Aptitude",
-    chapter: "Probability",
-    topic: "Card Selection Probability",
-    difficulty: "Hard",
-    patternTags: ["probability", "combinations"],
-    companyPatternReferences: ["Deloitte", "Genpact"],
-    isPublished: true,
+    "question": "Two cards are drawn at random from a standard deck of 52 playing cards. What is the probability that both cards are Kings?",
+    "options": [
+      "1/221",
+      "1/169",
+      "1/26",
+      "1/13"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Total ways to choose 2 cards from 52 = 52C2 = (52 * 51) / 2 = 1326. Ways to choose 2 Kings from 4 = 4C2 = 6. Probability = 6 / 1326 = 1 / 221.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Probability",
+    "topic": "Card Selection Probability",
+    "difficulty": "Hard",
+    "patternTags": [
+      "probability",
+      "combinations"
+    ],
+    "companyPatternReferences": [
+      "Deloitte",
+      "Genpact"
+    ],
+    "isPublished": true
   },
   {
-    question: "A vessel contains 60 liters of a mixture of milk and water in the ratio 3:1. How much water must be added to make the ratio of milk to water 1:1?",
-    options: ["15 liters", "20 liters", "30 liters", "45 liters"],
-    correctAnswerIndex: 2,
-    explanation: "Initial Milk = 60 * (3/4) = 45 liters. Initial Water = 60 * (1/4) = 15 liters. Let x liters of water be added. New ratio: Milk/Water = 45 / (15 + x) = 1/1 => 15 + x = 45 => x = 30 liters.",
-    category: "Quantitative Aptitude",
-    chapter: "Mixture and Allegation",
-    topic: "Single Component Addition",
-    difficulty: "Medium",
-    patternTags: ["mixtures", "ratios"],
-    companyPatternReferences: ["Cognizant", "IBM"],
-    isPublished: true,
+    "question": "A vessel contains 60 liters of a mixture of milk and water in the ratio 3:1. How much water must be added to make the ratio of milk to water 1:1?",
+    "options": [
+      "15 liters",
+      "20 liters",
+      "30 liters",
+      "45 liters"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Initial Milk = 60 * (3/4) = 45 liters. Initial Water = 60 * (1/4) = 15 liters. Let x liters of water be added. New ratio: Milk/Water = 45 / (15 + x) = 1/1 => 15 + x = 45 => x = 30 liters.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Mixture and Allegation",
+    "topic": "Single Component Addition",
+    "difficulty": "Medium",
+    "patternTags": [
+      "mixtures",
+      "ratios"
+    ],
+    "companyPatternReferences": [
+      "Cognizant",
+      "IBM"
+    ],
+    "isPublished": true
   },
   {
-    question: "If a sum of money doubles itself in 5 years at simple interest, what is the rate of interest per annum?",
-    options: ["15%", "20%", "25%", "10%"],
-    correctAnswerIndex: 1,
-    explanation: "Let Principal = P. Amount A = 2P => Simple Interest SI = A - P = P. Time T = 5 years. SI = (P * R * T)/100 => P = (P * R * 5)/100 => R * 5 = 100 => R = 20%.",
-    category: "Quantitative Aptitude",
-    chapter: "Simple Interest",
-    topic: "Doubling Time Calculation",
-    difficulty: "Easy",
-    patternTags: ["simple-interest", "arithmetic"],
-    companyPatternReferences: ["Wipro", "TCS"],
-    isPublished: true,
+    "question": "If a sum of money doubles itself in 5 years at simple interest, what is the rate of interest per annum?",
+    "options": [
+      "15%",
+      "20%",
+      "25%",
+      "10%"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Let Principal = P. Amount A = 2P => Simple Interest SI = A - P = P. Time T = 5 years. SI = (P * R * T)/100 => P = (P * R * 5)/100 => R * 5 = 100 => R = 20%.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Simple Interest",
+    "topic": "Doubling Time Calculation",
+    "difficulty": "Easy",
+    "patternTags": [
+      "simple-interest",
+      "arithmetic"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "TCS"
+    ],
+    "isPublished": true
   },
   {
-    question: "The average score of a class of 30 students in an assessment is 65. If the score of the top scorer (95) is excluded, what is the new average score of the remaining 29 students?",
-    options: ["63.97", "64.00", "64.20", "64.50"],
-    correctAnswerIndex: 0,
-    explanation: "Total score of 30 students = 30 * 65 = 1950. Excluding top score: New Total = 1950 - 95 = 1855. New Average = 1855 / 29 â‰ˆ 63.9655 â‰ˆ 63.97.",
-    category: "Quantitative Aptitude",
-    chapter: "Averages",
-    topic: "Exclusion Impact on Mean",
-    difficulty: "Medium",
-    patternTags: ["averages", "arithmetic"],
-    companyPatternReferences: ["Infosys", "Capgemini"],
-    isPublished: true,
-  },
-
-  // --- LOGICAL REASONING ---
-  {
-    question: "Find the missing number in the series: 4, 9, 19, 39, 79, ?",
-    options: ["119", "139", "159", "179"],
-    correctAnswerIndex: 2,
-    explanation: "Pattern: Each term is obtained by multiplying the previous term by 2 and adding 1. (4*2 + 1 = 9; 9*2 + 1 = 19; 19*2 + 1 = 39; 39*2 + 1 = 79; 79*2 + 1 = 159). Missing number = 159.",
-    category: "Logical Reasoning",
-    chapter: "Number Series",
-    topic: "Multiplicative Series with Constant Addition",
-    difficulty: "Easy",
-    patternTags: ["number-series", "pattern-recognition"],
-    companyPatternReferences: ["TCS NQT", "Accenture", "Cognizant"],
-    isPublished: true,
+    "question": "The average score of a class of 30 students in an assessment is 65. If the score of the top scorer (95) is excluded, what is the new average score of the remaining 29 students?",
+    "options": [
+      "63.97",
+      "64.00",
+      "64.20",
+      "64.50"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Total score of 30 students = 30 * 65 = 1950. Excluding top score: New Total = 1950 - 95 = 1855. New Average = 1855 / 29 ≈ 63.9655 ≈ 63.97.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Averages",
+    "topic": "Exclusion Impact on Mean",
+    "difficulty": "Medium",
+    "patternTags": [
+      "averages",
+      "arithmetic"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Capgemini"
+    ],
+    "isPublished": true
   },
   {
-    question: "In a certain code language, 'COMPUTER' is written as 'RFUVQNPC'. How is 'MEDICINE' written in that same code language?",
-    options: ["EOJDEJFM", "EOJDJEFM", "MFEDICIN", "EOJDJMFM"],
-    correctAnswerIndex: 1,
-    explanation: "Reverse the word 'COMPUTER' -> 'RETPUMOC'. Shift each inner letter forward by 1: R stays R, E->F, T->U, P->Q, U->V, M->N, O->P, C stays C -> RFUVQNPC. For 'MEDICINE': Reverse -> 'ENICIDEM'. Keep first and last letter E and M. Shift middle letters forward by +1: N->O, I->J, C->D, I->J, D->E, E->F. Result: EOJDJEFM.",
-    category: "Logical Reasoning",
-    chapter: "Coding-Decoding",
-    topic: "Letter Transformation & Reversal",
-    difficulty: "Medium",
-    patternTags: ["coding-decoding", "cipher"],
-    companyPatternReferences: ["Infosys", "Capgemini", "Wipro"],
-    isPublished: true,
+    "question": "Find the missing number in the series: 4, 9, 19, 39, 79, ?",
+    "options": [
+      "119",
+      "139",
+      "159",
+      "179"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Pattern: Each term is obtained by multiplying the previous term by 2 and adding 1. (4*2 + 1 = 9; 9*2 + 1 = 19; 19*2 + 1 = 39; 39*2 + 1 = 79; 79*2 + 1 = 159). Missing number = 159.",
+    "category": "Logical Reasoning",
+    "chapter": "Number Series",
+    "topic": "Multiplicative Series with Constant Addition",
+    "difficulty": "Easy",
+    "patternTags": [
+      "number-series",
+      "pattern-recognition"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Accenture",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "Pointing to a photograph, Rohit said, 'She is the daughter of my grandfather's only son.' How is the girl in the photograph related to Rohit?",
-    options: ["Mother", "Aunt", "Sister", "Cousin"],
-    correctAnswerIndex: 2,
-    explanation: "Rohit's grandfather's only son = Rohit's father. The girl is the daughter of Rohit's father => She is Rohit's sister.",
-    category: "Logical Reasoning",
-    chapter: "Blood Relations",
-    topic: "Pointing Statement Problems",
-    difficulty: "Easy",
-    patternTags: ["blood-relations", "family-tree"],
-    companyPatternReferences: ["Accenture", "Tech Mahindra"],
-    isPublished: true,
+    "question": "In a certain code language, 'COMPUTER' is written as 'RFUVQNPC'. How is 'MEDICINE' written in that same code language?",
+    "options": [
+      "EOJDEJFM",
+      "EOJDJEFM",
+      "MFEDICIN",
+      "EOJDJMFM"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Reverse the word 'COMPUTER' -> 'RETPUMOC'. Shift each inner letter forward by 1: R stays R, E->F, T->U, P->Q, U->V, M->N, O->P, C stays C -> RFUVQNPC. For 'MEDICINE': Reverse -> 'ENICIDEM'. Keep first and last letter E and M. Shift middle letters forward by +1: N->O, I->J, C->D, I->J, D->E, E->F. Result: EOJDJEFM.",
+    "category": "Logical Reasoning",
+    "chapter": "Coding-Decoding",
+    "topic": "Letter Transformation & Reversal",
+    "difficulty": "Medium",
+    "patternTags": [
+      "coding-decoding",
+      "cipher"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Capgemini",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "A person starts walking towards North, travels 10 km, turns left and walks 6 km, then turns left again and walks 10 km. How far and in which direction is he from his starting point?",
-    options: ["6 km West", "6 km East", "10 km South", "16 km West"],
-    correctAnswerIndex: 0,
-    explanation: "North 10 km (+10 Y). Turn left -> West 6 km (-6 X). Turn left -> South 10 km (-10 Y). Net position: X = -6, Y = 0. He is 6 km to the West of his starting point.",
-    category: "Logical Reasoning",
-    chapter: "Direction Sense",
-    topic: "Cardinal Direction Loops",
-    difficulty: "Easy",
-    patternTags: ["direction-sense", "spatial-reasoning"],
-    companyPatternReferences: ["Cognizant", "Deloitte"],
-    isPublished: true,
+    "question": "Pointing to a photograph, Rohit said, 'She is the daughter of my grandfather's only son.' How is the girl in the photograph related to Rohit?",
+    "options": [
+      "Mother",
+      "Aunt",
+      "Sister",
+      "Cousin"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Rohit's grandfather's only son = Rohit's father. The girl is the daughter of Rohit's father => She is Rohit's sister.",
+    "category": "Logical Reasoning",
+    "chapter": "Blood Relations",
+    "topic": "Pointing Statement Problems",
+    "difficulty": "Easy",
+    "patternTags": [
+      "blood-relations",
+      "family-tree"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
   },
   {
-    question: "Statements: All cats are dogs. All dogs are birds.\nConclusions:\nI. All cats are birds.\nII. Some birds are cats.",
-    options: ["Only Conclusion I follows", "Only Conclusion II follows", "Neither I nor II follows", "Both Conclusion I and II follow"],
-    correctAnswerIndex: 3,
-    explanation: "Cats âŠ‚ Dogs and Dogs âŠ‚ Birds implies Cats âŠ‚ Birds. Therefore, 'All cats are birds' (I) is TRUE. Since Cats âŠ‚ Birds, the intersection of Birds and Cats is non-empty, so 'Some birds are cats' (II) is also TRUE. Both conclusions follow.",
-    category: "Logical Reasoning",
-    chapter: "Syllogism",
-    topic: "Universal Affirmative Chains",
-    difficulty: "Medium",
-    patternTags: ["syllogisms", "deductive-logic"],
-    companyPatternReferences: ["TCS NQT", "Persistent"],
-    isPublished: true,
+    "question": "A person starts walking towards North, travels 10 km, turns left and walks 6 km, then turns left again and walks 10 km. How far and in which direction is he from his starting point?",
+    "options": [
+      "6 km West",
+      "6 km East",
+      "10 km South",
+      "16 km West"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "North 10 km (+10 Y). Turn left -> West 6 km (-6 X). Turn left -> South 10 km (-10 Y). Net position: X = -6, Y = 0. He is 6 km to the West of his starting point.",
+    "category": "Logical Reasoning",
+    "chapter": "Direction Sense",
+    "topic": "Cardinal Direction Loops",
+    "difficulty": "Easy",
+    "patternTags": [
+      "direction-sense",
+      "spatial-reasoning"
+    ],
+    "companyPatternReferences": [
+      "Cognizant",
+      "Deloitte"
+    ],
+    "isPublished": true
   },
   {
-    question: "Five executives A, B, C, D, and E are seated in a row facing North. C is sitting next to E and D. B is at the extreme right end. A is sitting to the immediate left of C. Who is sitting at the extreme left end?",
-    options: ["A", "C", "D", "E"],
-    correctAnswerIndex: 0,
-    explanation: "B is at extreme right (position 5). C is next to E and D. A is to the immediate left of C => Order from left to right: A, C, D/E... Since C is between A and D/E, the arrangement from left (1) to right (5) is: A, C, E, D, B or A, C, D, E, B. In both valid orders, A is at the extreme left end (position 1).",
-    category: "Logical Reasoning",
-    chapter: "Seating Arrangement",
-    topic: "Linear Seating Facing North",
-    difficulty: "Medium",
-    patternTags: ["linear-arrangement", "puzzles"],
-    companyPatternReferences: ["LTIMindtree", "Infosys"],
-    isPublished: true,
+    "question": "Statements: All cats are dogs. All dogs are birds.\nConclusions:\nI. All cats are birds.\nII. Some birds are cats.",
+    "options": [
+      "Only Conclusion I follows",
+      "Only Conclusion II follows",
+      "Neither I nor II follows",
+      "Both Conclusion I and II follow"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "Cats ⊆ Dogs and Dogs ⊆ Birds implies Cats ⊆ Birds. Therefore, 'All cats are birds' (I) is TRUE. Since Cats ⊆ Birds, the intersection of Birds and Cats is non-empty, so 'Some birds are cats' (II) is also TRUE. Both conclusions follow.",
+    "category": "Logical Reasoning",
+    "chapter": "Syllogism",
+    "topic": "Universal Affirmative Chains",
+    "difficulty": "Medium",
+    "patternTags": [
+      "syllogisms",
+      "deductive-logic"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Persistent"
+    ],
+    "isPublished": true
   },
   {
-    question: "What angle is formed between the hour hand and the minute hand of a clock at 3:30?",
-    options: ["75Â°", "80Â°", "85Â°", "90Â°"],
-    correctAnswerIndex: 0,
-    explanation: "Formula: Angle = |30H - 5.5M|. At H = 3, M = 30: Angle = |30(3) - 5.5(30)| = |90 - 165| = |-75| = 75Â°.",
-    category: "Logical Reasoning",
-    chapter: "Clocks",
-    topic: "Hand Angle Formula",
-    difficulty: "Medium",
-    patternTags: ["clocks", "time-geometry"],
-    companyPatternReferences: ["HCLTech", "Wipro"],
-    isPublished: true,
+    "question": "Five executives A, B, C, D, and E are seated in a row facing North. C is sitting next to E and D. B is at the extreme right end. A is sitting to the immediate left of C. Who is sitting at the extreme left end?",
+    "options": [
+      "A",
+      "C",
+      "D",
+      "E"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "B is at extreme right (position 5). C is next to E and D. A is to the immediate left of C => Order from left to right: A, C, D/E... Since C is between A and D/E, the arrangement from left (1) to right (5) is: A, C, E, D, B or A, C, D, E, B. In both valid orders, A is at the extreme left end (position 1).",
+    "category": "Logical Reasoning",
+    "chapter": "Seating Arrangement",
+    "topic": "Linear Seating Facing North",
+    "difficulty": "Medium",
+    "patternTags": [
+      "linear-arrangement",
+      "puzzles"
+    ],
+    "companyPatternReferences": [
+      "LTIMindtree",
+      "Infosys"
+    ],
+    "isPublished": true
   },
   {
-    question: "If January 1, 2024 was a Monday, what day of the week was January 1, 2025?",
-    options: ["Tuesday", "Wednesday", "Thursday", "Monday"],
-    correctAnswerIndex: 1,
-    explanation: "2024 is a leap year (366 days). 366 mod 7 = 2 odd days. So January 1, 2025 will be Monday + 2 days = Wednesday.",
-    category: "Logical Reasoning",
-    chapter: "Calendars",
-    topic: "Leap Year Odd Days",
-    difficulty: "Easy",
-    patternTags: ["calendars", "modulo-arithmetic"],
-    companyPatternReferences: ["Capgemini", "Accenture"],
-    isPublished: true,
-  },
-
-  // --- VERBAL ABILITY ---
-  {
-    question: "Select the word most nearly SYNONYMOUS in meaning to 'PRUDENT':",
-    options: ["Rash", "Cautious", "Impetuous", "Negligent"],
-    correctAnswerIndex: 1,
-    explanation: "'Prudent' means acting with or showing care and thought for the future (wise, cautious, circumspect). Therefore, 'Cautious' is the closest synonym. 'Rash' and 'Impetuous' are antonyms.",
-    category: "Verbal Ability",
-    chapter: "Synonyms",
-    topic: "Vocabulary Context",
-    difficulty: "Easy",
-    patternTags: ["synonyms", "vocabulary"],
-    companyPatternReferences: ["TCS NQT", "Accenture"],
-    isPublished: true,
+    "question": "What angle is formed between the hour hand and the minute hand of a clock at 3:30?",
+    "options": [
+      "75°",
+      "80°",
+      "85°",
+      "90°"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Formula: Angle = |30H - 5.5M|. At H = 3, M = 30: Angle = |30(3) - 5.5(30)| = |90 - 165| = |-75| = 75°.",
+    "category": "Logical Reasoning",
+    "chapter": "Clocks",
+    "topic": "Hand Angle Formula",
+    "difficulty": "Medium",
+    "patternTags": [
+      "clocks",
+      "time-geometry"
+    ],
+    "companyPatternReferences": [
+      "HCLTech",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "Select the word most nearly ANTONYMOUS in meaning to 'METICULOUS':",
-    options: ["Careful", "Diligent", "Careless", "Scrupulous"],
-    correctAnswerIndex: 2,
-    explanation: "'Meticulous' means showing great attention to detail; very careful and precise. The opposite (antonym) is 'Careless' or negligent.",
-    category: "Verbal Ability",
-    chapter: "Antonyms",
-    topic: "Antonym Identification",
-    difficulty: "Easy",
-    patternTags: ["antonyms", "vocabulary"],
-    companyPatternReferences: ["Infosys", "Cognizant"],
-    isPublished: true,
+    "question": "If January 1, 2024 was a Monday, what day of the week was January 1, 2025?",
+    "options": [
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Monday"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "2024 is a leap year (366 days). 366 mod 7 = 2 odd days. So January 1, 2025 will be Monday + 2 days = Wednesday.",
+    "category": "Logical Reasoning",
+    "chapter": "Calendars",
+    "topic": "Leap Year Odd Days",
+    "difficulty": "Easy",
+    "patternTags": [
+      "calendars",
+      "modulo-arithmetic"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Accenture"
+    ],
+    "isPublished": true
   },
   {
-    question: "Identify the part of the sentence that contains a grammatical error:\n'Neither the manager nor the employees (A) / was aware of (B) / the sudden changes in company policy (C) / No error (D).'",
-    options: ["Neither the manager nor the employees", "was aware of", "the sudden changes in company policy", "No error"],
-    correctAnswerIndex: 1,
-    explanation: "When two subjects are connected by 'neither... nor', the verb agrees with the closer subject. Here, the closer subject is 'the employees' (plural). Thus, 'was aware of' is incorrect and should be replaced by 'were aware of'. Error is in part B.",
-    category: "Verbal Ability",
-    chapter: "Subject-Verb Agreement",
-    topic: "Proximity Rule in Correlative Conjunctions",
-    difficulty: "Medium",
-    patternTags: ["error-detection", "grammar"],
-    companyPatternReferences: ["Deloitte", "IBM"],
-    isPublished: true,
+    "question": "Select the word most nearly SYNONYMOUS in meaning to 'PRUDENT':",
+    "options": [
+      "Rash",
+      "Cautious",
+      "Impetuous",
+      "Negligent"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "'Prudent' means acting with or showing care and thought for the future (wise, cautious, circumspect). Therefore, 'Cautious' is the closest synonym. 'Rash' and 'Impetuous' are antonyms.",
+    "category": "Verbal Ability",
+    "chapter": "Synonyms",
+    "topic": "Vocabulary Context",
+    "difficulty": "Easy",
+    "patternTags": [
+      "synonyms",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Accenture"
+    ],
+    "isPublished": true
   },
   {
-    question: "Fill in the blank with the most appropriate preposition:\n'The candidate was completely engrossed _____ his coding assessment when the proctor called.'",
-    options: ["on", "with", "in", "at"],
-    correctAnswerIndex: 2,
-    explanation: "The adjective 'engrossed' correctly pairs with the preposition 'in' when meaning deeply absorbed or involved in an activity (engrossed in something).",
-    category: "Verbal Ability",
-    chapter: "Prepositions",
-    topic: "Fixed Prepositions",
-    difficulty: "Easy",
-    patternTags: ["fill-in-blanks", "grammar"],
-    companyPatternReferences: ["Capgemini", "Persistent"],
-    isPublished: true,
+    "question": "Select the word most nearly ANTONYMOUS in meaning to 'METICULOUS':",
+    "options": [
+      "Careful",
+      "Diligent",
+      "Careless",
+      "Scrupulous"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "'Meticulous' means showing great attention to detail; very careful and precise. The opposite (antonym) is 'Careless' or negligent.",
+    "category": "Verbal Ability",
+    "chapter": "Antonyms",
+    "topic": "Antonym Identification",
+    "difficulty": "Easy",
+    "patternTags": [
+      "antonyms",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "Choose the correct one-word substitution for: 'A person who looks at the bright side of things.'",
-    options: ["Pessimist", "Optimist", "Altruist", "Egoist"],
-    correctAnswerIndex: 1,
-    explanation: "An 'Optimist' is a person who tends to be hopeful and confident about the future or the success of something (looking at the bright side). 'Pessimist' looks at the dark side.",
-    category: "Verbal Ability",
-    chapter: "One Word Substitution",
-    topic: "Personality Descriptors",
-    difficulty: "Easy",
-    patternTags: ["one-word-substitution", "vocabulary"],
-    companyPatternReferences: ["Wipro", "Tech Mahindra"],
-    isPublished: true,
+    "question": "Identify the part of the sentence that contains a grammatical error:\n'Neither the manager nor the employees (A) / was aware of (B) / the sudden changes in company policy (C) / No error (D).'",
+    "options": [
+      "Neither the manager nor the employees",
+      "was aware of",
+      "the sudden changes in company policy",
+      "No error"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "When two subjects are connected by 'neither... nor', the verb agrees with the closer subject. Here, the closer subject is 'the employees' (plural). Thus, 'was aware of' is incorrect and should be replaced by 'were aware of'. Error is in part B.",
+    "category": "Verbal Ability",
+    "chapter": "Subject-Verb Agreement",
+    "topic": "Proximity Rule in Correlative Conjunctions",
+    "difficulty": "Medium",
+    "patternTags": [
+      "error-detection",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "Deloitte",
+      "IBM"
+    ],
+    "isPublished": true
   },
   {
-    question: "Rearrange the jumbled sentences to form a coherent paragraph:\nP: This rapid digitization has transformed traditional business operations.\nQ: Artificial intelligence is now integrated into daily workflow tools.\nR: Consequently, professionals must continuously upgrade their technical skills.\nS: Modern enterprise technology is evolving at an unprecedented pace.",
-    options: ["SQPR", "SPQR", "SQRP", "PQRS"],
-    correctAnswerIndex: 0,
-    explanation: "S is the general opening statement introducing enterprise technology evolution. Q provides specific context about AI integration. P builds on Q explaining how digitization transforms operations. R gives the concluding consequence (skills upgrade). Logical flow: S -> Q -> P -> R (SQPR).",
-    category: "Verbal Ability",
-    chapter: "Para Jumbles",
-    topic: "Logical Paragraph Sequencing",
-    difficulty: "Hard",
-    patternTags: ["para-jumbles", "coherence"],
-    companyPatternReferences: ["TCS Digital", "Infosys SP"],
-    isPublished: true,
+    "question": "Fill in the blank with the most appropriate preposition:\n'The candidate was completely engrossed _____ his coding assessment when the proctor called.'",
+    "options": [
+      "on",
+      "with",
+      "in",
+      "at"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "The adjective 'engrossed' correctly pairs with the preposition 'in' when meaning deeply absorbed or involved in an activity (engrossed in something).",
+    "category": "Verbal Ability",
+    "chapter": "Prepositions",
+    "topic": "Fixed Prepositions",
+    "difficulty": "Easy",
+    "patternTags": [
+      "fill-in-blanks",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Persistent"
+    ],
+    "isPublished": true
   },
   {
-    question: "Change the sentence to Passive Voice:\n'The team successfully deployed the new software update.'",
-    options: [
+    "question": "Choose the correct one-word substitution for: 'A person who looks at the bright side of things.'",
+    "options": [
+      "Pessimist",
+      "Optimist",
+      "Altruist",
+      "Egoist"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "An 'Optimist' is a person who tends to be hopeful and confident about the future or the success of something (looking at the bright side). 'Pessimist' looks at the dark side.",
+    "category": "Verbal Ability",
+    "chapter": "One Word Substitution",
+    "topic": "Personality Descriptors",
+    "difficulty": "Easy",
+    "patternTags": [
+      "one-word-substitution",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Rearrange the jumbled sentences to form a coherent paragraph:\nP: This rapid digitization has transformed traditional business operations.\nQ: Artificial intelligence is now integrated into daily workflow tools.\nR: Consequently, professionals must continuously upgrade their technical skills.\nS: Modern enterprise technology is evolving at an unprecedented pace.",
+    "options": [
+      "SQPR",
+      "SPQR",
+      "SQRP",
+      "PQRS"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "S is the general opening statement introducing enterprise technology evolution. Q provides specific context about AI integration. P builds on Q explaining how digitization transforms operations. R gives the concluding consequence (skills upgrade). Logical flow: S -> Q -> P -> R (SQPR).",
+    "category": "Verbal Ability",
+    "chapter": "Para Jumbles",
+    "topic": "Logical Paragraph Sequencing",
+    "difficulty": "Hard",
+    "patternTags": [
+      "para-jumbles",
+      "coherence"
+    ],
+    "companyPatternReferences": [
+      "TCS Digital",
+      "Infosys SP"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Change the sentence to Passive Voice:\n'The team successfully deployed the new software update.'",
+    "options": [
       "The new software update was successfully deployed by the team.",
       "The new software update had been deployed by the team.",
       "The new software update is deployed successfully by the team.",
       "The software update was being deployed by the team."
     ],
-    correctAnswerIndex: 0,
-    explanation: "The sentence is in Simple Past Tense ('deployed'). Passive voice format for Simple Past: Object + was/were + past participle (V3) + by + Subject. 'The new software update was successfully deployed by the team.'",
-    category: "Verbal Ability",
-    chapter: "Active and Passive Voice",
-    topic: "Simple Past Voice Transformation",
-    difficulty: "Medium",
-    patternTags: ["voice-change", "grammar"],
-    companyPatternReferences: ["Accenture", "Cognizant"],
-    isPublished: true,
+    "correctAnswerIndex": 0,
+    "explanation": "The sentence is in Simple Past Tense ('deployed'). Passive voice format for Simple Past: Object + was/were + past participle (V3) + by + Subject. 'The new software update was successfully deployed by the team.'",
+    "category": "Verbal Ability",
+    "chapter": "Active and Passive Voice",
+    "topic": "Simple Past Voice Transformation",
+    "difficulty": "Medium",
+    "patternTags": [
+      "voice-change",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "Two pipes P and Q can fill a tank in 20 minutes and 30 minutes respectively. If both pipes are opened together, how long will it take to fill the tank?",
-    options: ["10 minutes", "12 minutes", "15 minutes", "25 minutes"],
-    correctAnswerIndex: 1,
-    explanation: "Combined filling rate = (1/20) + (1/30) = (3 + 2)/60 = 5/60 = 1/12 tank per minute. Therefore, total time to fill the tank = 12 minutes.",
-    category: "Quantitative Aptitude",
-    chapter: "Pipes and Cisterns",
-    topic: "Combined Pipe Rate",
-    difficulty: "Easy",
-    patternTags: ["pipes-cisterns", "work-rate"],
-    companyPatternReferences: ["TCS", "Infosys"],
-    isPublished: true,
+    "question": "Two pipes P and Q can fill a tank in 20 minutes and 30 minutes respectively. If both pipes are opened together, how long will it take to fill the tank?",
+    "options": [
+      "10 minutes",
+      "12 minutes",
+      "15 minutes",
+      "25 minutes"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Combined filling rate = (1/20) + (1/30) = (3 + 2)/60 = 5/60 = 1/12 tank per minute. Therefore, total time to fill the tank = 12 minutes.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Pipes and Cisterns",
+    "topic": "Combined Pipe Rate",
+    "difficulty": "Easy",
+    "patternTags": [
+      "pipes-cisterns",
+      "work-rate"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "Infosys"
+    ],
+    "isPublished": true
   },
   {
-    question: "If 3x + 5y = 21 and 2x - y = 1, what is the value of x + y?",
-    options: ["4", "5", "6", "7"],
-    correctAnswerIndex: 1,
-    explanation: "From second equation: y = 2x - 1. Substitute into first: 3x + 5(2x - 1) = 21 => 3x + 10x - 5 = 21 => 13x = 26 => x = 2. Then y = 2(2) - 1 = 3. Value of x + y = 2 + 3 = 5.",
-    category: "Quantitative Aptitude",
-    chapter: "Linear Equations",
-    topic: "Simultaneous Equations",
-    difficulty: "Medium",
-    patternTags: ["algebra", "linear-equations"],
-    companyPatternReferences: ["Capgemini", "Wipro"],
-    isPublished: true,
+    "question": "If 3x + 5y = 21 and 2x - y = 1, what is the value of x + y?",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "From second equation: y = 2x - 1. Substitute into first: 3x + 5(2x - 1) = 21 => 3x + 10x - 5 = 21 => 13x = 26 => x = 2. Then y = 2(2) - 1 = 3. Value of x + y = 2 + 3 = 5.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Linear Equations",
+    "topic": "Simultaneous Equations",
+    "difficulty": "Medium",
+    "patternTags": [
+      "algebra",
+      "linear-equations"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "The sides of a right-angled triangle forming the right angle are 6 cm and 8 cm. What is the radius of its circumcircle?",
-    options: ["4 cm", "5 cm", "6 cm", "10 cm"],
-    correctAnswerIndex: 1,
-    explanation: "Hypotenuse of the right triangle = âˆš(6Â² + 8Â²) = âˆš(36 + 64) = âˆš100 = 10 cm. For a right-angled triangle, the circumradius R = Hypotenuse / 2 = 10 / 2 = 5 cm.",
-    category: "Quantitative Aptitude",
-    chapter: "Geometry",
-    topic: "Circumradius of Right Triangle",
-    difficulty: "Hard",
-    patternTags: ["geometry", "triangles"],
-    companyPatternReferences: ["Infosys SP", "Deloitte"],
-    isPublished: true,
+    "question": "The sides of a right-angled triangle forming the right angle are 6 cm and 8 cm. What is the radius of its circumcircle?",
+    "options": [
+      "4 cm",
+      "5 cm",
+      "6 cm",
+      "10 cm"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Hypotenuse of the right triangle = √(6² + 8²) = √(36 + 64) = √100 = 10 cm. For a right-angled triangle, the circumradius R = Hypotenuse / 2 = 10 / 2 = 5 cm.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Geometry",
+    "topic": "Circumradius of Right Triangle",
+    "difficulty": "Hard",
+    "patternTags": [
+      "geometry",
+      "triangles"
+    ],
+    "companyPatternReferences": [
+      "Infosys SP",
+      "Deloitte"
+    ],
+    "isPublished": true
   },
   {
-    question: "A sum of â‚¹5,000 is divided into two parts such that one part is invested at 8% simple interest and the other at 10%. If the total annual interest received is â‚¹440, find the sum invested at 8%.",
-    options: ["â‚¹2,000", "â‚¹3,000", "â‚¹2,500", "â‚¹3,500"],
-    correctAnswerIndex: 1,
-    explanation: "Let x be sum at 8%. Remaining (5000 - x) is at 10%. Interest = 0.08x + 0.10(5000 - x) = 440 => 0.08x + 500 - 0.10x = 440 => -0.02x = -60 => x = 3000. Sum at 8% = â‚¹3,000.",
-    category: "Quantitative Aptitude",
-    chapter: "Simple Interest",
-    topic: "Splitting Principal at Different Rates",
-    difficulty: "Medium",
-    patternTags: ["interest", "algebra"],
-    companyPatternReferences: ["Accenture", "Cognizant"],
-    isPublished: true,
+    "question": "A sum of ₹5,000 is divided into two parts such that one part is invested at 8% simple interest and the other at 10%. If the total annual interest received is ₹440, find the sum invested at 8%.",
+    "options": [
+      "₹2,000",
+      "₹3,000",
+      "₹2,500",
+      "₹3,500"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Let x be sum at 8%. Remaining (5000 - x) is at 10%. Interest = 0.08x + 0.10(5000 - x) = 440 => 0.08x + 500 - 0.10x = 440 => -0.02x = -60 => x = 3000. Sum at 8% = ₹3,000.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Simple Interest",
+    "topic": "Splitting Principal at Different Rates",
+    "difficulty": "Medium",
+    "patternTags": [
+      "interest",
+      "algebra"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "Simplify: (256)^0.16 * (256)^0.09",
-    options: ["4", "16", "64", "256"],
-    correctAnswerIndex: 0,
-    explanation: "Using exponent rule a^m * a^n = a^(m+n): 256^(0.16 + 0.09) = 256^0.25 = 256^(1/4). Since 4^4 = 256, (256)^(1/4) = 4.",
-    category: "Quantitative Aptitude",
-    chapter: "Simplification",
-    topic: "Exponents and Indices",
-    difficulty: "Easy",
-    patternTags: ["simplification", "exponents"],
-    companyPatternReferences: ["TCS NQT", "Tech Mahindra"],
-    isPublished: true,
+    "question": "Simplify: (256)^0.16 * (256)^0.09",
+    "options": [
+      "4",
+      "16",
+      "64",
+      "256"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Using exponent rule a^m * a^n = a^(m+n): 256^(0.16 + 0.09) = 256^0.25 = 256^(1/4). Since 4^4 = 256, (256)^(1/4) = 4.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Simplification",
+    "topic": "Exponents and Indices",
+    "difficulty": "Easy",
+    "patternTags": [
+      "simplification",
+      "exponents"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
   },
   {
-    question: "Select the related word pair: LIGHT : BLIND :: SOUND : ?",
-    options: ["DUMB", "DEAF", "SILENT", "AUDIBLE"],
-    correctAnswerIndex: 1,
-    explanation: "Absence or inability to perceive LIGHT is BLIND. Similarly, inability to perceive SOUND is DEAF.",
-    category: "Logical Reasoning",
-    chapter: "Analogy",
-    topic: "Word Analogy",
-    difficulty: "Easy",
-    patternTags: ["analogy", "word-relationships"],
-    companyPatternReferences: ["Cognizant", "Wipro"],
-    isPublished: true,
+    "question": "Select the related word pair: LIGHT : BLIND :: SOUND : ?",
+    "options": [
+      "DUMB",
+      "DEAF",
+      "SILENT",
+      "AUDIBLE"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Absence or inability to perceive LIGHT is BLIND. Similarly, inability to perceive SOUND is DEAF.",
+    "category": "Logical Reasoning",
+    "chapter": "Analogy",
+    "topic": "Word Analogy",
+    "difficulty": "Easy",
+    "patternTags": [
+      "analogy",
+      "word-relationships"
+    ],
+    "companyPatternReferences": [
+      "Cognizant",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "Statements:\nSome engineers are managers.\nNo manager is a contractor.\nConclusions:\nI. Some engineers are not contractors.\nII. Some managers are engineers.",
-    options: ["Only Conclusion I follows", "Only Conclusion II follows", "Neither I nor II follows", "Both Conclusion I and II follow"],
-    correctAnswerIndex: 3,
-    explanation: "Since some engineers are managers, the engineers who are managers cannot be contractors (because no manager is a contractor). Thus, 'Some engineers are not contractors' (I) is TRUE. Also, 'Some engineers are managers' implies 'Some managers are engineers' (II) is TRUE. Both follow.",
-    category: "Logical Reasoning",
-    chapter: "Syllogism",
-    topic: "Negative & Particular Syllogisms",
-    difficulty: "Hard",
-    patternTags: ["syllogisms", "deductive-logic"],
-    companyPatternReferences: ["LTIMindtree", "Persistent"],
-    isPublished: true,
+    "question": "Statements:\nSome engineers are managers.\nNo manager is a contractor.\nConclusions:\nI. Some engineers are not contractors.\nII. Some managers are engineers.",
+    "options": [
+      "Only Conclusion I follows",
+      "Only Conclusion II follows",
+      "Neither I nor II follows",
+      "Both Conclusion I and II follow"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "Since some engineers are managers, the engineers who are managers cannot be contractors (because no manager is a contractor). Thus, 'Some engineers are not contractors' (I) is TRUE. Also, 'Some engineers are managers' implies 'Some managers are engineers' (II) is TRUE. Both follow.",
+    "category": "Logical Reasoning",
+    "chapter": "Syllogism",
+    "topic": "Negative & Particular Syllogisms",
+    "difficulty": "Hard",
+    "patternTags": [
+      "syllogisms",
+      "deductive-logic"
+    ],
+    "companyPatternReferences": [
+      "LTIMindtree",
+      "Persistent"
+    ],
+    "isPublished": true
   },
   {
-    question: "In a class of 45 students, Rank of Suresh is 15th from the top. What is his rank from the bottom?",
-    options: ["30th", "31st", "32nd", "29th"],
-    correctAnswerIndex: 1,
-    explanation: "Formula: Rank from bottom = Total students - Rank from top + 1 = 45 - 15 + 1 = 31st.",
-    category: "Logical Reasoning",
-    chapter: "Ranking and Order",
-    topic: "Linear Rank Calculation",
-    difficulty: "Easy",
-    patternTags: ["ranking", "order"],
-    companyPatternReferences: ["Capgemini", "Accenture"],
-    isPublished: true,
+    "question": "In a class of 45 students, Rank of Suresh is 15th from the top. What is his rank from the bottom?",
+    "options": [
+      "30th",
+      "31st",
+      "32nd",
+      "29th"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Formula: Rank from bottom = Total students - Rank from top + 1 = 45 - 15 + 1 = 31st.",
+    "category": "Logical Reasoning",
+    "chapter": "Ranking and Order",
+    "topic": "Linear Rank Calculation",
+    "difficulty": "Easy",
+    "patternTags": [
+      "ranking",
+      "order"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Accenture"
+    ],
+    "isPublished": true
   },
   {
-    question: "Statements: Regular meditation improves mental focus.\nAssumptions:\nI. Mental focus can be enhanced through practice.\nII. People desire better mental focus.",
-    options: ["Only Assumption I is implicit", "Only Assumption II is implicit", "Neither I nor II is implicit", "Both I and II are implicit"],
-    correctAnswerIndex: 3,
-    explanation: "The statement implies that practice (meditation) works to improve focus, so Assumption I is implicit. Advising meditation assumes people want improved focus, so Assumption II is also implicit. Both assumptions are implicit.",
-    category: "Logical Reasoning",
-    chapter: "Statement and Assumption",
-    topic: "Implicit Logic in Recommendations",
-    difficulty: "Medium",
-    patternTags: ["critical-reasoning", "assumptions"],
-    companyPatternReferences: ["TCS Digital", "Infosys"],
-    isPublished: true,
+    "question": "Statements: Regular meditation improves mental focus.\nAssumptions:\nI. Mental focus can be enhanced through practice.\nII. People desire better mental focus.",
+    "options": [
+      "Only Assumption I is implicit",
+      "Only Assumption II is implicit",
+      "Neither I nor II is implicit",
+      "Both I and II are implicit"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "The statement implies that practice (meditation) works to improve focus, so Assumption I is implicit. Advising meditation assumes people want improved focus, so Assumption II is also implicit. Both assumptions are implicit.",
+    "category": "Logical Reasoning",
+    "chapter": "Statement and Assumption",
+    "topic": "Implicit Logic in Recommendations",
+    "difficulty": "Medium",
+    "patternTags": [
+      "critical-reasoning",
+      "assumptions"
+    ],
+    "companyPatternReferences": [
+      "TCS Digital",
+      "Infosys"
+    ],
+    "isPublished": true
   },
   {
-    question: "Identify the odd one out from the given four numbers: 121, 169, 225, 289.",
-    options: ["121", "169", "225", "289"],
-    correctAnswerIndex: 2,
-    explanation: "121 = 11Â² (prime base), 169 = 13Â² (prime base), 289 = 17Â² (prime base). 225 = 15Â² (composite base). Thus, 225 is the odd one out.",
-    category: "Logical Reasoning",
-    chapter: "Classification",
-    topic: "Number Classification by Prime Base",
-    difficulty: "Medium",
-    patternTags: ["classification", "odd-one-out"],
-    companyPatternReferences: ["Wipro", "Cognizant"],
-    isPublished: true,
+    "question": "Identify the odd one out from the given four numbers: 121, 169, 225, 289.",
+    "options": [
+      "121",
+      "169",
+      "225",
+      "289"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "121 = 11² (prime base), 169 = 13² (prime base), 289 = 17² (prime base). 225 = 15² (composite base). Thus, 225 is the odd one out.",
+    "category": "Logical Reasoning",
+    "chapter": "Classification",
+    "topic": "Number Classification by Prime Base",
+    "difficulty": "Medium",
+    "patternTags": [
+      "classification",
+      "odd-one-out"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "Select the word that correctly replaces the underlined phrase:\n'He was convicted of taking money fraudulently from his employer.'",
-    options: ["Embezzlement", "Extortion", "Bribery", "Plagiarism"],
-    correctAnswerIndex: 0,
-    explanation: "'Embezzlement' means theft or misappropriation of funds placed in one's trust or belonging to one's employer. 'Extortion' is obtaining by force, 'Bribery' is offering money for influence, 'Plagiarism' is copying work.",
-    category: "Verbal Ability",
-    chapter: "One Word Substitution",
-    topic: "Legal and Financial Terms",
-    difficulty: "Medium",
-    patternTags: ["one-word-substitution", "vocabulary"],
-    companyPatternReferences: ["Deloitte", "Accenture"],
-    isPublished: true,
+    "question": "Select the word that correctly replaces the underlined phrase:\n'He was convicted of taking money fraudulently from his employer.'",
+    "options": [
+      "Embezzlement",
+      "Extortion",
+      "Bribery",
+      "Plagiarism"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "'Embezzlement' means theft or misappropriation of funds placed in one's trust or belonging to one's employer. 'Extortion' is obtaining by force, 'Bribery' is offering money for influence, 'Plagiarism' is copying work.",
+    "category": "Verbal Ability",
+    "chapter": "One Word Substitution",
+    "topic": "Legal and Financial Terms",
+    "difficulty": "Medium",
+    "patternTags": [
+      "one-word-substitution",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "Deloitte",
+      "Accenture"
+    ],
+    "isPublished": true
   },
   {
-    question: "Fill in the blank with the correct form of the verb:\n'Neither of the candidate solutions _____ completely error-free.'",
-    options: ["are", "is", "were", "have been"],
-    correctAnswerIndex: 1,
-    explanation: "'Neither' when used as a singular pronoun takes a singular verb. Therefore, 'is' is the correct choice ('Neither of the candidate solutions is...').",
-    category: "Verbal Ability",
-    chapter: "Subject-Verb Agreement",
-    topic: "Indefinite Pronouns Agreement",
-    difficulty: "Easy",
-    patternTags: ["grammar", "subject-verb-agreement"],
-    companyPatternReferences: ["Infosys", "TCS NQT"],
-    isPublished: true,
+    "question": "Fill in the blank with the correct form of the verb:\n'Neither of the candidate solutions _____ completely error-free.'",
+    "options": [
+      "are",
+      "is",
+      "were",
+      "have been"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "'Neither' when used as a singular pronoun takes a singular verb. Therefore, 'is' is the correct choice ('Neither of the candidate solutions is...').",
+    "category": "Verbal Ability",
+    "chapter": "Subject-Verb Agreement",
+    "topic": "Indefinite Pronouns Agreement",
+    "difficulty": "Easy",
+    "patternTags": [
+      "grammar",
+      "subject-verb-agreement"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "TCS NQT"
+    ],
+    "isPublished": true
   },
   {
-    question: "Select the option that best expresses the meaning of the idiom: 'To bite the bullet'",
-    options: [
+    "question": "Select the option that best expresses the meaning of the idiom: 'To bite the bullet'",
+    "options": [
       "To face a difficult situation courageously",
       "To act in a cowardly manner",
       "To get injured in conflict",
       "To make a hasty decision"
     ],
-    correctAnswerIndex: 0,
-    explanation: "The idiom 'to bite the bullet' means to endure a painful or difficult situation that is unavoidable with courage and fortitude.",
-    category: "Verbal Ability",
-    chapter: "Idioms and Phrases",
-    topic: "Idiomatic Meanings",
-    difficulty: "Easy",
-    patternTags: ["idioms", "phrases"],
-    companyPatternReferences: ["Cognizant", "Capgemini"],
-    isPublished: true,
+    "correctAnswerIndex": 0,
+    "explanation": "The idiom 'to bite the bullet' means to endure a painful or difficult situation that is unavoidable with courage and fortitude.",
+    "category": "Verbal Ability",
+    "chapter": "Idioms and Phrases",
+    "topic": "Idiomatic Meanings",
+    "difficulty": "Easy",
+    "patternTags": [
+      "idioms",
+      "phrases"
+    ],
+    "companyPatternReferences": [
+      "Cognizant",
+      "Capgemini"
+    ],
+    "isPublished": true
   },
   {
-    question: "Identify the grammatical error in the given sentence:\n'Hardly had the meeting started (A) / when the power outage occurred (B) / and everyone left the hall (C) / No error (D).'",
-    options: ["Hardly had the meeting started", "when the power outage occurred", "and everyone left the hall", "No error"],
-    correctAnswerIndex: 3,
-    explanation: "'Hardly had... when...' is a correct correlative conjunction pairing. The tense structure ('had started... occurred') is grammatically accurate. There is no error in the sentence (Option D).",
-    category: "Verbal Ability",
-    chapter: "Error Detection",
-    topic: "Inversion and Correlative Conjunctions",
-    difficulty: "Hard",
-    patternTags: ["error-detection", "grammar"],
-    companyPatternReferences: ["TCS Digital", "LTIMindtree"],
-    isPublished: true,
-  },
-  // --- Additional Quantitative Aptitude ---
-  {
-    question: "In an election, candidate A got 60% of votes. B got remaining votes. A won by 480 votes. Total votes cast?",
-    options: ["1,200", "1,600", "2,400", "4,800"],
-    correctAnswerIndex: 2,
-    explanation: "A got 60%, B 40%. Margin = 20% = 480. Total = 480/0.20 = 2,400.",
-    category: "Quantitative Aptitude",
-    chapter: "Percentages",
-    topic: "Election Vote Percentage",
-    difficulty: "Medium",
-    patternTags: ["percentage-application", "arithmetic"],
-    companyPatternReferences: ["Accenture", "Capgemini"],
-    isPublished: true,
+    "question": "Identify the grammatical error in the given sentence:\n'Hardly had the meeting started (A) / when the power outage occurred (B) / and everyone left the hall (C) / No error (D).'",
+    "options": [
+      "Hardly had the meeting started",
+      "when the power outage occurred",
+      "and everyone left the hall",
+      "No error"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "'Hardly had... when...' is a correct correlative conjunction pairing. The tense structure ('had started... occurred') is grammatically accurate. There is no error in the sentence (Option D).",
+    "category": "Verbal Ability",
+    "chapter": "Error Detection",
+    "topic": "Inversion and Correlative Conjunctions",
+    "difficulty": "Hard",
+    "patternTags": [
+      "error-detection",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "TCS Digital",
+      "LTIMindtree"
+    ],
+    "isPublished": true
   },
   {
-    question: "A, B, and C together complete a task in 6 days. A and B together in 8 days. Days for C alone?",
-    options: ["14 days", "20 days", "24 days", "28 days"],
-    correctAnswerIndex: 2,
-    explanation: "C's 1-day = 1/6 - 1/8 = 1/24. C alone = 24 days.",
-    category: "Quantitative Aptitude",
-    chapter: "Time and Work",
-    topic: "Three-Worker Isolation",
-    difficulty: "Easy",
-    patternTags: ["work-rate", "fractions"],
-    companyPatternReferences: ["TCS", "Wipro"],
-    isPublished: true,
+    "question": "In an election, candidate A got 60% of votes. B got remaining votes. A won by 480 votes. Total votes cast?",
+    "options": [
+      "1,200",
+      "1,600",
+      "2,400",
+      "4,800"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "A got 60%, B 40%. Margin = 20% = 480. Total = 480/0.20 = 2,400.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Percentages",
+    "topic": "Election Vote Percentage",
+    "difficulty": "Medium",
+    "patternTags": [
+      "percentage-application",
+      "arithmetic"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Capgemini"
+    ],
+    "isPublished": true
   },
   {
-    question: "Two trains 120 m and 180 m run in opposite directions at 54 and 36 km/h. Time to cross each other?",
-    options: ["6 seconds", "8 seconds", "10 seconds", "12 seconds"],
-    correctAnswerIndex: 3,
-    explanation: "Total length = 300 m. Combined speed = 90 km/h = 25 m/s. Time = 300/25 = 12 s.",
-    category: "Quantitative Aptitude",
-    chapter: "Problems on Trains",
-    topic: "Opposite Direction Crossing",
-    difficulty: "Medium",
-    patternTags: ["speed-distance", "relative-motion"],
-    companyPatternReferences: ["Infosys", "Wipro"],
-    isPublished: true,
+    "question": "A, B, and C together complete a task in 6 days. A and B together in 8 days. Days for C alone?",
+    "options": [
+      "14 days",
+      "20 days",
+      "24 days",
+      "28 days"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "C's 1-day = 1/6 - 1/8 = 1/24. C alone = 24 days.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Time and Work",
+    "topic": "Three-Worker Isolation",
+    "difficulty": "Easy",
+    "patternTags": [
+      "work-rate",
+      "fractions"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "Father is 3x son's age. After 12 years, father = 2x son's age. Present ages?",
-    options: ["Father: 36, Son: 12", "Father: 42, Son: 14", "Father: 45, Son: 15", "Father: 48, Son: 16"],
-    correctAnswerIndex: 0,
-    explanation: "Son = x, father = 3x. 3x+12 = 2(x+12) => x = 12. Son = 12, Father = 36.",
-    category: "Quantitative Aptitude",
-    chapter: "Problems on Ages",
-    topic: "Father-Son Age Ratio",
-    difficulty: "Easy",
-    patternTags: ["algebra", "ages"],
-    companyPatternReferences: ["Cognizant", "Tech Mahindra"],
-    isPublished: true,
+    "question": "Two trains 120 m and 180 m run in opposite directions at 54 and 36 km/h. Time to cross each other?",
+    "options": [
+      "6 seconds",
+      "8 seconds",
+      "10 seconds",
+      "12 seconds"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "Total length = 300 m. Combined speed = 90 km/h = 25 m/s. Time = 300/25 = 12 s.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Problems on Trains",
+    "topic": "Opposite Direction Crossing",
+    "difficulty": "Medium",
+    "patternTags": [
+      "speed-distance",
+      "relative-motion"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "Shopkeeper marks goods 40% above CP and gives 25% discount. Net profit or loss?",
-    options: ["5% profit", "5% loss", "10% profit", "15% profit"],
-    correctAnswerIndex: 0,
-    explanation: "CP=100, MP=140, SP=140x0.75=105. Profit = 5%.",
-    category: "Quantitative Aptitude",
-    chapter: "Profit and Loss",
-    topic: "Marked Price with Discount",
-    difficulty: "Medium",
-    patternTags: ["profit-loss", "discount"],
-    companyPatternReferences: ["Infosys", "Capgemini"],
-    isPublished: true,
+    "question": "Father is 3x son's age. After 12 years, father = 2x son's age. Present ages?",
+    "options": [
+      "Father: 36, Son: 12",
+      "Father: 42, Son: 14",
+      "Father: 45, Son: 15",
+      "Father: 48, Son: 16"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Son = x, father = 3x. 3x+12 = 2(x+12) => x = 12. Son = 12, Father = 36.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Problems on Ages",
+    "topic": "Father-Son Age Ratio",
+    "difficulty": "Easy",
+    "patternTags": [
+      "algebra",
+      "ages"
+    ],
+    "companyPatternReferences": [
+      "Cognizant",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
   },
   {
-    question: "How many 3-digit numbers from digits 1,2,3,4,5 without repetition?",
-    options: ["40", "60", "80", "120"],
-    correctAnswerIndex: 1,
-    explanation: "5P3 = 5x4x3 = 60.",
-    category: "Quantitative Aptitude",
-    chapter: "Permutation and Combination",
-    topic: "Number Formation without Repetition",
-    difficulty: "Easy",
-    patternTags: ["permutations", "counting"],
-    companyPatternReferences: ["Wipro", "Cognizant"],
-    isPublished: true,
+    "question": "Shopkeeper marks goods 40% above CP and gives 25% discount. Net profit or loss?",
+    "options": [
+      "5% profit",
+      "5% loss",
+      "10% profit",
+      "15% profit"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "CP=100, MP=140, SP=140x0.75=105. Profit = 5%.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Profit and Loss",
+    "topic": "Marked Price with Discount",
+    "difficulty": "Medium",
+    "patternTags": [
+      "profit-loss",
+      "discount"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Capgemini"
+    ],
+    "isPublished": true
   },
   {
-    question: "Bag has 4 red and 6 blue balls. Two drawn simultaneously. Probability both red?",
-    options: ["1/15", "2/15", "4/15", "2/5"],
-    correctAnswerIndex: 1,
-    explanation: "Total = 10C2 = 45. Red pairs = 4C2 = 6. P = 6/45 = 2/15.",
-    category: "Quantitative Aptitude",
-    chapter: "Probability",
-    topic: "Bag Drawing Probability",
-    difficulty: "Medium",
-    patternTags: ["probability", "combinations"],
-    companyPatternReferences: ["Accenture", "Capgemini"],
-    isPublished: true,
+    "question": "How many 3-digit numbers from digits 1,2,3,4,5 without repetition?",
+    "options": [
+      "40",
+      "60",
+      "80",
+      "120"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "5P3 = 5x4x3 = 60.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Permutation and Combination",
+    "topic": "Number Formation without Repetition",
+    "difficulty": "Easy",
+    "patternTags": [
+      "permutations",
+      "counting"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "A pipe fills tank in 10 hrs. Drain empties in 15 hrs. Both open: time to fill?",
-    options: ["20 hours", "25 hours", "30 hours", "35 hours"],
-    correctAnswerIndex: 2,
-    explanation: "Net rate = 1/10 - 1/15 = 1/30. Time = 30 hrs.",
-    category: "Quantitative Aptitude",
-    chapter: "Pipes and Cisterns",
-    topic: "Pipe and Drain Combined",
-    difficulty: "Medium",
-    patternTags: ["pipes-cisterns", "net-rate"],
-    companyPatternReferences: ["Wipro", "Cognizant"],
-    isPublished: true,
+    "question": "Bag has 4 red and 6 blue balls. Two drawn simultaneously. Probability both red?",
+    "options": [
+      "1/15",
+      "2/15",
+      "4/15",
+      "2/5"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Total = 10C2 = 45. Red pairs = 4C2 = 6. P = 6/45 = 2/15.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Probability",
+    "topic": "Bag Drawing Probability",
+    "difficulty": "Medium",
+    "patternTags": [
+      "probability",
+      "combinations"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Capgemini"
+    ],
+    "isPublished": true
   },
   {
-    question: "Average of 5 consecutive odd numbers is 15. Largest number?",
-    options: ["17", "19", "21", "23"],
-    correctAnswerIndex: 1,
-    explanation: "Middle (3rd) = 15. Numbers: 11,13,15,17,19. Largest = 19.",
-    category: "Quantitative Aptitude",
-    chapter: "Averages",
-    topic: "Consecutive Number Averages",
-    difficulty: "Easy",
-    patternTags: ["averages", "number-sequences"],
-    companyPatternReferences: ["TCS NQT", "Tech Mahindra"],
-    isPublished: true,
+    "question": "A pipe fills tank in 10 hrs. Drain empties in 15 hrs. Both open: time to fill?",
+    "options": [
+      "20 hours",
+      "25 hours",
+      "30 hours",
+      "35 hours"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Net rate = 1/10 - 1/15 = 1/30. Time = 30 hrs.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Pipes and Cisterns",
+    "topic": "Pipe and Drain Combined",
+    "difficulty": "Medium",
+    "patternTags": [
+      "pipes-cisterns",
+      "net-rate"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "Car goes A to B at 60 km/h, returns at 40 km/h. Average speed?",
-    options: ["48 km/h", "50 km/h", "52 km/h", "54 km/h"],
-    correctAnswerIndex: 0,
-    explanation: "Avg = 2ab/(a+b) = 2x60x40/100 = 48 km/h.",
-    category: "Quantitative Aptitude",
-    chapter: "Time, Speed and Distance",
-    topic: "Harmonic Mean Speed",
-    difficulty: "Medium",
-    patternTags: ["speed-distance", "averages"],
-    companyPatternReferences: ["TCS", "Infosys"],
-    isPublished: true,
+    "question": "Average of 5 consecutive odd numbers is 15. Largest number?",
+    "options": [
+      "17",
+      "19",
+      "21",
+      "23"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Middle (3rd) = 15. Numbers: 11,13,15,17,19. Largest = 19.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Averages",
+    "topic": "Consecutive Number Averages",
+    "difficulty": "Easy",
+    "patternTags": [
+      "averages",
+      "number-sequences"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
   },
   {
-    question: "600 employees: 40% female. Of females, 30% in management. Female employees in management?",
-    options: ["60", "72", "80", "90"],
-    correctAnswerIndex: 1,
-    explanation: "Female = 240. Management = 30% of 240 = 72.",
-    category: "Quantitative Aptitude",
-    chapter: "Data Interpretation",
-    topic: "Multi-Step Percentage Calculation",
-    difficulty: "Easy",
-    patternTags: ["data-interpretation", "percentages"],
-    companyPatternReferences: ["Capgemini", "Cognizant"],
-    isPublished: true,
+    "question": "Car goes A to B at 60 km/h, returns at 40 km/h. Average speed?",
+    "options": [
+      "48 km/h",
+      "50 km/h",
+      "52 km/h",
+      "54 km/h"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Avg = 2ab/(a+b) = 2x60x40/100 = 48 km/h.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Time, Speed and Distance",
+    "topic": "Harmonic Mean Speed",
+    "difficulty": "Medium",
+    "patternTags": [
+      "speed-distance",
+      "averages"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "Infosys"
+    ],
+    "isPublished": true
   },
   {
-    question: "Copper:zinc alloy ratio 5:3. Copper = 40 kg. Zinc?",
-    options: ["20 kg", "24 kg", "28 kg", "32 kg"],
-    correctAnswerIndex: 1,
-    explanation: "5 parts = 40 kg => 1 part = 8 kg. Zinc = 3x8 = 24 kg.",
-    category: "Quantitative Aptitude",
-    chapter: "Ratio and Proportion",
-    topic: "Direct Proportion in Alloys",
-    difficulty: "Easy",
-    patternTags: ["ratios", "proportion"],
-    companyPatternReferences: ["TCS NQT", "Wipro"],
-    isPublished: true,
-  },
-
-  // --- Additional Logical Reasoning ---
-  {
-    question: "Series: 2, 6, 12, 20, 30, ?",
-    options: ["40", "42", "44", "48"],
-    correctAnswerIndex: 1,
-    explanation: "Differences: 4,6,8,10 (+2 each time). Next diff = 12. 30+12 = 42.",
-    category: "Logical Reasoning",
-    chapter: "Number Series",
-    topic: "Difference-Based Series",
-    difficulty: "Easy",
-    patternTags: ["number-series", "differences"],
-    companyPatternReferences: ["Infosys", "Wipro"],
-    isPublished: true,
+    "question": "600 employees: 40% female. Of females, 30% in management. Female employees in management?",
+    "options": [
+      "60",
+      "72",
+      "80",
+      "90"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Female = 240. Management = 30% of 240 = 72.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Data Interpretation",
+    "topic": "Multi-Step Percentage Calculation",
+    "difficulty": "Easy",
+    "patternTags": [
+      "data-interpretation",
+      "percentages"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "Find the missing term: 1, 4, 9, 16, 25, ?, 49",
-    options: ["30", "34", "36", "40"],
-    correctAnswerIndex: 2,
-    explanation: "Perfect squares series. Missing = 6^2 = 36.",
-    category: "Logical Reasoning",
-    chapter: "Number Series",
-    topic: "Perfect Square Series",
-    difficulty: "Easy",
-    patternTags: ["number-series", "squares"],
-    companyPatternReferences: ["Capgemini", "Tech Mahindra"],
-    isPublished: true,
+    "question": "Copper:zinc alloy ratio 5:3. Copper = 40 kg. Zinc?",
+    "options": [
+      "20 kg",
+      "24 kg",
+      "28 kg",
+      "32 kg"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "5 parts = 40 kg => 1 part = 8 kg. Zinc = 3x8 = 24 kg.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Ratio and Proportion",
+    "topic": "Direct Proportion in Alloys",
+    "difficulty": "Easy",
+    "patternTags": [
+      "ratios",
+      "proportion"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "If A=1, B=2, ..., Z=26, what is the code for CAT?",
-    options: ["3120", "3121", "2421", "3241"],
-    correctAnswerIndex: 0,
-    explanation: "C=3, A=1, T=20. Code = 3120.",
-    category: "Logical Reasoning",
-    chapter: "Coding-Decoding",
-    topic: "Number-Letter Substitution",
-    difficulty: "Easy",
-    patternTags: ["coding-decoding", "number-substitution"],
-    companyPatternReferences: ["TCS NQT", "Accenture"],
-    isPublished: true,
+    "question": "Series: 2, 6, 12, 20, 30, ?",
+    "options": [
+      "40",
+      "42",
+      "44",
+      "48"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Differences: 4,6,8,10 (+2 each time). Next diff = 12. 30+12 = 42.",
+    "category": "Logical Reasoning",
+    "chapter": "Number Series",
+    "topic": "Difference-Based Series",
+    "difficulty": "Easy",
+    "patternTags": [
+      "number-series",
+      "differences"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "A is B's sister. C is B's mother. D is C's father. How is A related to D?",
-    options: ["Granddaughter", "Daughter", "Niece", "Great-Granddaughter"],
-    correctAnswerIndex: 0,
-    explanation: "A is D's granddaughter (A and B are siblings; B's mother is C; C's father is D).",
-    category: "Logical Reasoning",
-    chapter: "Blood Relations",
-    topic: "Multi-Generation Relationships",
-    difficulty: "Medium",
-    patternTags: ["blood-relations", "family-tree"],
-    companyPatternReferences: ["TCS", "Cognizant"],
-    isPublished: true,
+    "question": "Find the missing term: 1, 4, 9, 16, 25, ?, 49",
+    "options": [
+      "30",
+      "34",
+      "36",
+      "40"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Perfect squares series. Missing = 6^2 = 36.",
+    "category": "Logical Reasoning",
+    "chapter": "Number Series",
+    "topic": "Perfect Square Series",
+    "difficulty": "Easy",
+    "patternTags": [
+      "number-series",
+      "squares"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
   },
   {
-    question: "SURGEON : SCALPEL :: PAINTER : ?",
-    options: ["Canvas", "Brush", "Paint", "Gallery"],
-    correctAnswerIndex: 1,
-    explanation: "Surgeon uses a scalpel. Painter uses a brush.",
-    category: "Logical Reasoning",
-    chapter: "Analogy",
-    topic: "Tool-Profession Analogy",
-    difficulty: "Easy",
-    patternTags: ["analogy", "profession-tools"],
-    companyPatternReferences: ["Accenture", "Wipro"],
-    isPublished: true,
+    "question": "If A=1, B=2, ..., Z=26, what is the code for CAT?",
+    "options": [
+      "3120",
+      "3121",
+      "2421",
+      "3241"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "C=3, A=1, T=20. Code = 3120.",
+    "category": "Logical Reasoning",
+    "chapter": "Coding-Decoding",
+    "topic": "Number-Letter Substitution",
+    "difficulty": "Easy",
+    "patternTags": [
+      "coding-decoding",
+      "number-substitution"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Accenture"
+    ],
+    "isPublished": true
   },
   {
-    question: "Which does NOT belong: Keyboard, Mouse, Monitor, CPU?",
-    options: ["Keyboard", "Mouse", "Monitor", "CPU"],
-    correctAnswerIndex: 2,
-    explanation: "Monitor is an output device. The rest are input/processing devices.",
-    category: "Logical Reasoning",
-    chapter: "Classification",
-    topic: "Computer Peripheral Classification",
-    difficulty: "Easy",
-    patternTags: ["classification", "computer-knowledge"],
-    companyPatternReferences: ["TCS NQT", "Wipro"],
-    isPublished: true,
+    "question": "A is B's sister. C is B's mother. D is C's father. How is A related to D?",
+    "options": [
+      "Granddaughter",
+      "Daughter",
+      "Niece",
+      "Great-Granddaughter"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A is D's granddaughter (A and B are siblings; B's mother is C; C's father is D).",
+    "category": "Logical Reasoning",
+    "chapter": "Blood Relations",
+    "topic": "Multi-Generation Relationships",
+    "difficulty": "Medium",
+    "patternTags": [
+      "blood-relations",
+      "family-tree"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "All positive integers are whole numbers. 5 is a positive integer. Therefore?",
-    options: ["5 is a whole number", "5 is not a whole number", "Some positive integers are not whole numbers", "Cannot be determined"],
-    correctAnswerIndex: 0,
-    explanation: "All A are B; 5 is A; therefore 5 is B (whole number).",
-    category: "Logical Reasoning",
-    chapter: "Logical Deduction",
-    topic: "Categorical Syllogism",
-    difficulty: "Easy",
-    patternTags: ["deductive-logic", "syllogisms"],
-    companyPatternReferences: ["Accenture", "Infosys"],
-    isPublished: true,
+    "question": "SURGEON : SCALPEL :: PAINTER : ?",
+    "options": [
+      "Canvas",
+      "Brush",
+      "Paint",
+      "Gallery"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Surgeon uses a scalpel. Painter uses a brush.",
+    "category": "Logical Reasoning",
+    "chapter": "Analogy",
+    "topic": "Tool-Profession Analogy",
+    "difficulty": "Easy",
+    "patternTags": [
+      "analogy",
+      "profession-tools"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "100 students: 60 Math, 50 Science, 20 both. How many study neither?",
-    options: ["10", "20", "30", "40"],
-    correctAnswerIndex: 0,
-    explanation: "Math or Science = 60+50-20 = 90. Neither = 100-90 = 10.",
-    category: "Logical Reasoning",
-    chapter: "Venn Diagrams",
-    topic: "Set Intersection and Union",
-    difficulty: "Easy",
-    patternTags: ["venn-diagrams", "set-theory"],
-    companyPatternReferences: ["TCS", "Capgemini"],
-    isPublished: true,
+    "question": "Which does NOT belong: Keyboard, Mouse, Monitor, CPU?",
+    "options": [
+      "Keyboard",
+      "Mouse",
+      "Monitor",
+      "CPU"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Monitor is an output device. The rest are input/processing devices.",
+    "category": "Logical Reasoning",
+    "chapter": "Classification",
+    "topic": "Computer Peripheral Classification",
+    "difficulty": "Easy",
+    "patternTags": [
+      "classification",
+      "computer-knowledge"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "Series: AZ, BY, CX, DW, ?",
-    options: ["EV", "FV", "EU", "FU"],
-    correctAnswerIndex: 0,
-    explanation: "First letters: A,B,C,D,E (forward). Second letters: Z,Y,X,W,V (backward). Answer: EV.",
-    category: "Logical Reasoning",
-    chapter: "Alphabet Series",
-    topic: "Dual-Direction Alphabet Series",
-    difficulty: "Easy",
-    patternTags: ["alphabet-series", "pattern-recognition"],
-    companyPatternReferences: ["Wipro", "Cognizant"],
-    isPublished: true,
+    "question": "All positive integers are whole numbers. 5 is a positive integer. Therefore?",
+    "options": [
+      "5 is a whole number",
+      "5 is not a whole number",
+      "Some positive integers are not whole numbers",
+      "Cannot be determined"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "All A are B; 5 is A; therefore 5 is B (whole number).",
+    "category": "Logical Reasoning",
+    "chapter": "Logical Deduction",
+    "topic": "Categorical Syllogism",
+    "difficulty": "Easy",
+    "patternTags": [
+      "deductive-logic",
+      "syllogisms"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Infosys"
+    ],
+    "isPublished": true
   },
   {
-    question: "5 boxes: Red, Blue, Green, Yellow, White. Red left of Blue. Green between Yellow and White. Blue right of Yellow. Middle box?",
-    options: ["Red", "Blue", "Green", "Yellow"],
-    correctAnswerIndex: 2,
-    explanation: "Valid arrangement: Red, Yellow, Green, White, Blue. Middle = Green.",
-    category: "Logical Reasoning",
-    chapter: "Puzzles",
-    topic: "Box Arrangement Puzzle",
-    difficulty: "Medium",
-    patternTags: ["puzzles", "arrangement"],
-    companyPatternReferences: ["Infosys SP", "LTIMindtree"],
-    isPublished: true,
-  },
-
-  // --- Additional Verbal Ability ---
-  {
-    question: "Word most similar to LUCID:",
-    options: ["Obscure", "Clear", "Elaborate", "Ambiguous"],
-    correctAnswerIndex: 1,
-    explanation: "Lucid = easily understood. Clear is the synonym.",
-    category: "Verbal Ability",
-    chapter: "Synonyms",
-    topic: "Single Word Vocabulary",
-    difficulty: "Easy",
-    patternTags: ["synonyms", "vocabulary"],
-    companyPatternReferences: ["Infosys", "Wipro"],
-    isPublished: true,
+    "question": "100 students: 60 Math, 50 Science, 20 both. How many study neither?",
+    "options": [
+      "10",
+      "20",
+      "30",
+      "40"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Math or Science = 60+50-20 = 90. Neither = 100-90 = 10.",
+    "category": "Logical Reasoning",
+    "chapter": "Venn Diagrams",
+    "topic": "Set Intersection and Union",
+    "difficulty": "Easy",
+    "patternTags": [
+      "venn-diagrams",
+      "set-theory"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "Capgemini"
+    ],
+    "isPublished": true
   },
   {
-    question: "Antonym of EXACERBATE:",
-    options: ["Worsen", "Mitigate", "Aggravate", "Intensify"],
-    correctAnswerIndex: 1,
-    explanation: "Exacerbate = make worse. Mitigate = make less severe (antonym).",
-    category: "Verbal Ability",
-    chapter: "Antonyms",
-    topic: "Advanced Antonym",
-    difficulty: "Medium",
-    patternTags: ["antonyms", "advanced-vocabulary"],
-    companyPatternReferences: ["Deloitte", "Accenture"],
-    isPublished: true,
+    "question": "Series: AZ, BY, CX, DW, ?",
+    "options": [
+      "EV",
+      "FV",
+      "EU",
+      "FU"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "First letters: A,B,C,D,E (forward). Second letters: Z,Y,X,W,V (backward). Answer: EV.",
+    "category": "Logical Reasoning",
+    "chapter": "Alphabet Series",
+    "topic": "Dual-Direction Alphabet Series",
+    "difficulty": "Easy",
+    "patternTags": [
+      "alphabet-series",
+      "pattern-recognition"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "Cognizant"
+    ],
+    "isPublished": true
   },
   {
-    question: "What does break the ice mean?",
-    options: ["To end a relationship", "To relieve tension and start a conversation", "To cause a conflict", "To make a cold environment warmer"],
-    correctAnswerIndex: 1,
-    explanation: "Break the ice = to initiate conversation to ease tension in a social situation.",
-    category: "Verbal Ability",
-    chapter: "Idioms and Phrases",
-    topic: "Social Idioms",
-    difficulty: "Easy",
-    patternTags: ["idioms", "phrases"],
-    companyPatternReferences: ["Wipro", "Tech Mahindra"],
-    isPublished: true,
+    "question": "5 boxes: Red, Blue, Green, Yellow, White. Red left of Blue. Green between Yellow and White. Blue right of Yellow. Middle box?",
+    "options": [
+      "Red",
+      "Blue",
+      "Green",
+      "Yellow"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Valid arrangement: Red, Yellow, Green, White, Blue. Middle = Green.",
+    "category": "Logical Reasoning",
+    "chapter": "Puzzles",
+    "topic": "Box Arrangement Puzzle",
+    "difficulty": "Medium",
+    "patternTags": [
+      "puzzles",
+      "arrangement"
+    ],
+    "companyPatternReferences": [
+      "Infosys SP",
+      "LTIMindtree"
+    ],
+    "isPublished": true
   },
   {
-    question: "Choose grammatically correct: He _____ know how to code.",
-    options: ["doesn't knows", "don't know", "doesn't know", "not knowing"],
-    correctAnswerIndex: 2,
-    explanation: "With does not (doesn't), use base verb form know, not knows.",
-    category: "Verbal Ability",
-    chapter: "Sentence Correction",
-    topic: "Auxiliary Verb and Main Verb Agreement",
-    difficulty: "Easy",
-    patternTags: ["sentence-correction", "grammar"],
-    companyPatternReferences: ["TCS NQT", "Infosys"],
-    isPublished: true,
+    "question": "Word most similar to LUCID:",
+    "options": [
+      "Obscure",
+      "Clear",
+      "Elaborate",
+      "Ambiguous"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Lucid = easily understood. Clear is the synonym.",
+    "category": "Verbal Ability",
+    "chapter": "Synonyms",
+    "topic": "Single Word Vocabulary",
+    "difficulty": "Easy",
+    "patternTags": [
+      "synonyms",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "Fill blank: The discovery was so _____ that it overturned decades of research.",
-    options: ["mundane", "revolutionary", "trivial", "redundant"],
-    correctAnswerIndex: 1,
-    explanation: "Revolutionary = groundbreaking. Mundane and trivial mean ordinary.",
-    category: "Verbal Ability",
-    chapter: "Sentence Completion",
-    topic: "Context-Based Vocabulary",
-    difficulty: "Medium",
-    patternTags: ["sentence-completion", "vocabulary"],
-    companyPatternReferences: ["Infosys SP", "Deloitte"],
-    isPublished: true,
+    "question": "Antonym of EXACERBATE:",
+    "options": [
+      "Worsen",
+      "Mitigate",
+      "Aggravate",
+      "Intensify"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Exacerbate = make worse. Mitigate = make less severe (antonym).",
+    "category": "Verbal Ability",
+    "chapter": "Antonyms",
+    "topic": "Advanced Antonym",
+    "difficulty": "Medium",
+    "patternTags": [
+      "antonyms",
+      "advanced-vocabulary"
+    ],
+    "companyPatternReferences": [
+      "Deloitte",
+      "Accenture"
+    ],
+    "isPublished": true
   },
   {
-    question: "By the time the manager arrived, the team _____ the project.",
-    options: ["completed", "has completed", "had completed", "was completing"],
-    correctAnswerIndex: 2,
-    explanation: "By the time + past event requires Past Perfect: had completed.",
-    category: "Verbal Ability",
-    chapter: "Tenses",
-    topic: "Past Perfect with By the Time",
-    difficulty: "Medium",
-    patternTags: ["tenses", "grammar"],
-    companyPatternReferences: ["Accenture", "Capgemini"],
-    isPublished: true,
+    "question": "What does break the ice mean?",
+    "options": [
+      "To end a relationship",
+      "To relieve tension and start a conversation",
+      "To cause a conflict",
+      "To make a cold environment warmer"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Break the ice = to initiate conversation to ease tension in a social situation.",
+    "category": "Verbal Ability",
+    "chapter": "Idioms and Phrases",
+    "topic": "Social Idioms",
+    "difficulty": "Easy",
+    "patternTags": [
+      "idioms",
+      "phrases"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
   },
   {
-    question: "Indirect speech: She said I am preparing for placement exams.",
-    options: [
+    "question": "Choose grammatically correct: He _____ know how to code.",
+    "options": [
+      "doesn't knows",
+      "don't know",
+      "doesn't know",
+      "not knowing"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "With does not (doesn't), use base verb form know, not knows.",
+    "category": "Verbal Ability",
+    "chapter": "Sentence Correction",
+    "topic": "Auxiliary Verb and Main Verb Agreement",
+    "difficulty": "Easy",
+    "patternTags": [
+      "sentence-correction",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Infosys"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Fill blank: The discovery was so _____ that it overturned decades of research.",
+    "options": [
+      "mundane",
+      "revolutionary",
+      "trivial",
+      "redundant"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Revolutionary = groundbreaking. Mundane and trivial mean ordinary.",
+    "category": "Verbal Ability",
+    "chapter": "Sentence Completion",
+    "topic": "Context-Based Vocabulary",
+    "difficulty": "Medium",
+    "patternTags": [
+      "sentence-completion",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "Infosys SP",
+      "Deloitte"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "By the time the manager arrived, the team _____ the project.",
+    "options": [
+      "completed",
+      "has completed",
+      "had completed",
+      "was completing"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "By the time + past event requires Past Perfect: had completed.",
+    "category": "Verbal Ability",
+    "chapter": "Tenses",
+    "topic": "Past Perfect with By the Time",
+    "difficulty": "Medium",
+    "patternTags": [
+      "tenses",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Capgemini"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Indirect speech: She said I am preparing for placement exams.",
+    "options": [
       "She said that she is preparing for her placement exams.",
       "She said that she was preparing for her placement exams.",
       "She told that she had been preparing for her placement exams.",
       "She said that I am preparing for my placement exams."
     ],
-    correctAnswerIndex: 1,
-    explanation: "Present Continuous becomes Past Continuous in indirect speech. am preparing => was preparing.",
-    category: "Verbal Ability",
-    chapter: "Direct and Indirect Speech",
-    topic: "Tense Backshift in Reported Speech",
-    difficulty: "Medium",
-    patternTags: ["indirect-speech", "grammar"],
-    companyPatternReferences: ["Cognizant", "Wipro"],
-    isPublished: true,
+    "correctAnswerIndex": 1,
+    "explanation": "Present Continuous becomes Past Continuous in indirect speech. am preparing => was preparing.",
+    "category": "Verbal Ability",
+    "chapter": "Direct and Indirect Speech",
+    "topic": "Tense Backshift in Reported Speech",
+    "difficulty": "Medium",
+    "patternTags": [
+      "indirect-speech",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "Cognizant",
+      "Wipro"
+    ],
+    "isPublished": true
   },
   {
-    question: "The company will _____ a new policy next quarter.",
-    options: ["affect", "effect", "implement", "imply"],
-    correctAnswerIndex: 2,
-    explanation: "Implement = to put into practice. Best fits rolling out a new policy.",
-    category: "Verbal Ability",
-    chapter: "Word Usage",
-    topic: "Contextual Word Selection",
-    difficulty: "Easy",
-    patternTags: ["word-usage", "vocabulary"],
-    companyPatternReferences: ["TCS", "IBM"],
-    isPublished: true,
+    "question": "The company will _____ a new policy next quarter.",
+    "options": [
+      "affect",
+      "effect",
+      "implement",
+      "imply"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Implement = to put into practice. Best fits rolling out a new policy.",
+    "category": "Verbal Ability",
+    "chapter": "Word Usage",
+    "topic": "Contextual Word Selection",
+    "difficulty": "Easy",
+    "patternTags": [
+      "word-usage",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "IBM"
+    ],
+    "isPublished": true
   },
+  {
+    "question": "What is the remainder when 2^35 is divided by 7?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "6"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "2^3 = 8 ≡ 1 (mod 7). Expressing exponent: 2^35 = (2^3)^11 * 2^2 = (1)^11 * 4 = 4. Hence, the remainder is 4.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Number System",
+    "topic": "Modular Arithmetic & Remainders",
+    "difficulty": "Medium",
+    "patternTags": [
+      "number-system",
+      "remainders"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Infosys"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "If a 7-digit number 5432y71 is divisible by 9, what is the value of single digit y?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "A number is divisible by 9 if the sum of its digits is divisible by 9. Sum = 5 + 4 + 3 + 2 + y + 7 + 1 = 22 + y. The smallest non-negative integer y making (22 + y) divisible by 9 is y = 5 (22 + 5 = 27).",
+    "category": "Quantitative Aptitude",
+    "chapter": "Divisibility",
+    "topic": "Divisibility Rule of 9",
+    "difficulty": "Easy",
+    "patternTags": [
+      "divisibility",
+      "number-properties"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Cognizant"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "A and B invest in a partnership in the ratio 3 : 5. If A keeps his investment for 8 months and B keeps his investment for 6 months, find the ratio of their profit shares.",
+    "options": [
+      "4 : 5",
+      "3 : 4",
+      "5 : 6",
+      "12 : 25"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Ratio of profit shares = (Capital_A * Time_A) : (Capital_B * Time_B) = (3 * 8) : (5 * 6) = 24 : 30 = 4 : 5.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Partnership",
+    "topic": "Capital-Time Ratio",
+    "difficulty": "Easy",
+    "patternTags": [
+      "partnership",
+      "ratio-proportion"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "Wipro"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "An article with a marked price of ₹1,000 is sold after two successive discounts of 20% and 10%. What is the final selling price?",
+    "options": [
+      "₹700",
+      "₹720",
+      "₹750",
+      "₹680"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "After first discount of 20%: Price = 1000 * 0.80 = ₹800. After second discount of 10%: Price = 800 * 0.90 = ₹720. Successive discount multiplier = (1 - 0.20)(1 - 0.10) = 0.72. SP = 1000 * 0.72 = ₹720.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Discount",
+    "topic": "Successive Discounts",
+    "difficulty": "Easy",
+    "patternTags": [
+      "discount",
+      "percentages"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "HCLTech"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "A boat travels at a speed of 13 km/h in still water. If the speed of the stream is 4 km/h, find the time taken by the boat to travel 68 km downstream.",
+    "options": [
+      "3 hours",
+      "4 hours",
+      "5 hours",
+      "6 hours"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Speed downstream = Speed in still water + Speed of stream = 13 + 4 = 17 km/h. Time taken = Distance / Speed = 68 / 17 = 4 hours.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Boats and Streams",
+    "topic": "Downstream Speed",
+    "difficulty": "Easy",
+    "patternTags": [
+      "speed-distance",
+      "boats-streams"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Deloitte"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "If α and β are the roots of the quadratic equation x² - 7x + 12 = 0, find the value of (α² + β²).",
+    "options": [
+      "25",
+      "37",
+      "49",
+      "13"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "For ax² + bx + c = 0, Sum of roots (α + β) = -b/a = 7, Product of roots (αβ) = c/a = 12. Identity: α² + β² = (α + β)² - 2αβ = 7² - 2(12) = 49 - 24 = 25.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Quadratic Equations",
+    "topic": "Roots and Coefficients",
+    "difficulty": "Medium",
+    "patternTags": [
+      "quadratic-equations",
+      "algebra"
+    ],
+    "companyPatternReferences": [
+      "LTIMindtree",
+      "Persistent"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "If x + (1/x) = 5, what is the value of x³ + (1/x³)?",
+    "options": [
+      "110",
+      "115",
+      "125",
+      "140"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Using algebraic identity: (x + 1/x)³ = x³ + 1/x³ + 3(x + 1/x). Substituting 5: 5³ = x³ + 1/x³ + 3(5) => 125 = x³ + 1/x³ + 15 => x³ + 1/x³ = 125 - 15 = 110.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Algebraic Expressions",
+    "topic": "Polynomial Identities",
+    "difficulty": "Medium",
+    "patternTags": [
+      "algebra",
+      "identities"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "TCS Digital"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Find the 15th term of the Arithmetic Progression (AP): 3, 7, 11, 15, ...",
+    "options": [
+      "55",
+      "59",
+      "63",
+      "67"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "First term a = 3, Common difference d = 7 - 3 = 4. Nth term formula: T_n = a + (n - 1)d. For n = 15: T_15 = 3 + (15 - 1) * 4 = 3 + 14 * 4 = 3 + 56 = 59.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Progressions",
+    "topic": "Arithmetic Progression Nth Term",
+    "difficulty": "Easy",
+    "patternTags": [
+      "progressions",
+      "arithmetic-progression"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "IBM"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "The perimeter of a rectangular plot is 80 meters and its length is 24 meters. What is the area of the plot in square meters?",
+    "options": [
+      "360 sq m",
+      "384 sq m",
+      "400 sq m",
+      "420 sq m"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Perimeter = 2(Length + Breadth) => 80 = 2(24 + B) => 24 + B = 40 => B = 16 meters. Area = Length * Breadth = 24 * 16 = 384 sq m.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Mensuration 2D",
+    "topic": "Rectangular Area & Perimeter",
+    "difficulty": "Easy",
+    "patternTags": [
+      "mensuration",
+      "geometry"
+    ],
+    "companyPatternReferences": [
+      "Wipro",
+      "Tech Mahindra"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Find the volume of a right circular cylinder whose base radius is 7 cm and height is 10 cm. (Take π = 22/7)",
+    "options": [
+      "1440 cm³",
+      "1540 cm³",
+      "1680 cm³",
+      "1760 cm³"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Volume of cylinder = π * r² * h = (22/7) * 7² * 10 = (22/7) * 49 * 10 = 22 * 7 * 10 = 1540 cm³.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Mensuration 3D",
+    "topic": "Cylinder Volume",
+    "difficulty": "Medium",
+    "patternTags": [
+      "mensuration-3d",
+      "geometry"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Deloitte"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Problem: Is the integer n even?\nStatement I: n² + 1 is an odd integer.\nStatement II: n is divisible by 4.\nWhich statement(s) is/are sufficient to answer?",
+    "options": [
+      "Statement I alone is sufficient, but Statement II alone is not sufficient",
+      "Statement II alone is sufficient, but Statement I alone is not sufficient",
+      "Either Statement I alone or Statement II alone is sufficient",
+      "Both statements together are needed"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "From Statement I: n² + 1 is odd => n² is even => n is even. Statement I alone is sufficient. From Statement II: n is divisible by 4 => n is a multiple of 4, hence n is even. Statement II alone is also sufficient. Therefore, either statement alone is sufficient.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Data Sufficiency",
+    "topic": "Integer Parity Sufficiency",
+    "difficulty": "Hard",
+    "patternTags": [
+      "data-sufficiency",
+      "number-properties"
+    ],
+    "companyPatternReferences": [
+      "TCS Digital",
+      "Accenture"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Find the missing term in the alphanumeric sequence: A1Z, C4X, E9V, G16T, ?",
+    "options": [
+      "I25R",
+      "H25R",
+      "I25S",
+      "I20R"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "First letter: A(+2) -> C(+2) -> E(+2) -> G(+2) -> I. Middle number: 1² -> 2²=4 -> 3²=9 -> 4²=16 -> 5²=25. Last letter: Z(-2) -> X(-2) -> V(-2) -> T(-2) -> R. Hence the next term is I25R.",
+    "category": "Logical Reasoning",
+    "chapter": "Alphanumeric Series",
+    "topic": "Combined Letter-Number Series",
+    "difficulty": "Easy",
+    "patternTags": [
+      "series",
+      "alphanumeric"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Cognizant"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Statement: Modern communication devices have significantly shortened the turnaround time for corporate decisions.\nConclusions:\nI. Quick decision-making is essential for modern business success.\nII. Corporate organizations did not make effective decisions before modern communication devices.\nWhich conclusion(s) follow logically?",
+    "options": [
+      "Only conclusion I follows",
+      "Only conclusion II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "The statement only remarks that modern communication devices shorten turnaround time. Conclusion I introduces a value judgment about business success not stated in the premise. Conclusion II makes an unjustified assumption about the past. Neither follows logically.",
+    "category": "Logical Reasoning",
+    "chapter": "Statement and Conclusion",
+    "topic": "Corporate Context Deductions",
+    "difficulty": "Medium",
+    "patternTags": [
+      "critical-reasoning",
+      "deductive-logic"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Deloitte"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Statement: Should continuous internal assessment replace end-semester final examinations in technical universities?\nArguments:\nI. Yes, because continuous assessment evaluates a student's regular effort throughout the term rather than performance on a single day.\nII. No, because internal assessment is susceptible to subjective evaluation and institutional bias.\nWhich argument is strong?",
+    "options": [
+      "Only argument I is strong",
+      "Only argument II is strong",
+      "Both arguments I and II are strong",
+      "Neither argument I nor II is strong"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Argument I addresses the pedagogical advantage of regular continuous evaluation over high-stakes single-day testing (strong). Argument II addresses the real operational risk of subjective grading and institutional bias (strong). Both present valid, substantive concerns.",
+    "category": "Logical Reasoning",
+    "chapter": "Statement and Argument",
+    "topic": "Educational Policy Evaluation",
+    "difficulty": "Hard",
+    "patternTags": [
+      "arguments",
+      "critical-thinking"
+    ],
+    "companyPatternReferences": [
+      "TCS NQT",
+      "Accenture"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Problem: Among four colleagues P, Q, R, and S, who is the tallest?\nStatement I: P is taller than Q but shorter than R.\nStatement II: S is shorter than P.\nWhich statement(s) is/are sufficient to answer?",
+    "options": [
+      "Statement I alone is sufficient",
+      "Statement II alone is sufficient",
+      "Both statements together are sufficient",
+      "Both statements together are NOT sufficient"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "From Statement I: R > P > Q. R is taller than P and Q. But S's position is unknown. From Statement II: P > S. Combining I and II: R > P, and P is taller than both Q and S (P > Q, P > S). Thus R must be the tallest among all four. Both statements together are sufficient.",
+    "category": "Logical Reasoning",
+    "chapter": "Data Sufficiency",
+    "topic": "Relative Height Comparison",
+    "difficulty": "Medium",
+    "patternTags": [
+      "data-sufficiency",
+      "logical-ordering"
+    ],
+    "companyPatternReferences": [
+      "Infosys SP",
+      "Wipro"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Choose the alternative that reflects the mirror image of the word 'PLACEMENT' when a mirror is placed vertically on its right side.",
+    "options": [
+      "TNEMECALP with each letter reversed horizontally",
+      "PLACEMENT with vertical inverted letters",
+      "TNEMECALP with identical letter orientations",
+      "TNEMECALq with inverted lowercase"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "In a vertical right mirror, the order of characters is reversed from right to left (T comes first, P comes last) and every individual asymmetrical letter undergoes lateral inversion (horizontal flip).",
+    "category": "Logical Reasoning",
+    "chapter": "Non-Verbal Reasoning",
+    "topic": "Lateral Inversion & Mirror Images",
+    "difficulty": "Easy",
+    "patternTags": [
+      "non-verbal",
+      "mirror-images"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Cognizant"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Read the passage: 'Edge computing processes data near the source of data generation rather than relying solely on a centralized cloud server. By reducing latency and bandwidth consumption, it enables real-time decision-making in autonomous vehicles and smart industrial systems.'\nAccording to the passage, what is the primary benefit of edge computing for autonomous vehicles?",
+    "options": [
+      "It completely eliminates the need for sensor hardware",
+      "It enables real-time decision-making by reducing latency",
+      "It stores all global data indefinitely on vehicle hard drives",
+      "It operates without any electricity or network connectivity"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The text directly states: 'By reducing latency and bandwidth consumption, it enables real-time decision-making in autonomous vehicles'.",
+    "category": "Verbal Ability",
+    "chapter": "Reading Comprehension",
+    "topic": "Factual Retrieval & Inference",
+    "difficulty": "Easy",
+    "patternTags": [
+      "reading-comprehension",
+      "tech-context"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "Accenture"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Select the word that best expresses the contextual meaning of 'MITIGATE':",
+    "options": [
+      "Aggravate",
+      "Alleviate",
+      "Prolong",
+      "Complicate"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "'Mitigate' means to make something bad less severe, serious, or painful. 'Alleviate' is its direct synonym. Aggravate and complicate are antonyms.",
+    "category": "Verbal Ability",
+    "chapter": "Vocabulary",
+    "topic": "Contextual Synonym",
+    "difficulty": "Easy",
+    "patternTags": [
+      "vocabulary",
+      "synonyms"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Deloitte"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Although the engineering team faced _____ obstacles during development, their _____ determination led to a triumphant production launch.",
+    "options": [
+      "formidable, unwavering",
+      "insignificant, reluctant",
+      "trivial, casual",
+      "fleeting, unsteady"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "'Although' signals a contrast between daunting obstacles ('formidable') and resolute persistence ('unwavering') that produces a triumphant launch.",
+    "category": "Verbal Ability",
+    "chapter": "Fill in the Blanks",
+    "topic": "Double Blanks with Contrast Signal",
+    "difficulty": "Medium",
+    "patternTags": [
+      "sentence-completion",
+      "vocabulary"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Wipro"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Improve the bracketed portion: 'The lead architect insisted that the database [is migrated] before the peak traffic hours.'",
+    "options": [
+      "be migrated",
+      "was migrated",
+      "migrates",
+      "has been migrated"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Verbs expressing demand, insistence, or requirement ('insisted that') require the subjunctive mood base form: 'that the database be migrated'.",
+    "category": "Verbal Ability",
+    "chapter": "Sentence Improvement",
+    "topic": "Subjunctive Mood in That-Clauses",
+    "difficulty": "Hard",
+    "patternTags": [
+      "grammar",
+      "subjunctive-mood"
+    ],
+    "companyPatternReferences": [
+      "TCS Digital",
+      "LTIMindtree"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Complete the paragraph: 'Agile methodologies emphasize iterative delivery and close cross-functional collaboration. Unlike legacy waterfall practices, requirements evolve through continuous feedback. Consequently, engineering teams can _____.'",
+    "options": [
+      "eliminate the need to ever write unit tests or documentation",
+      "pivot rapidly in response to real-world user feedback and market changes",
+      "guarantee that no software defects will ever emerge in production",
+      "freeze all project requirements on the very first day of sprint zero"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The preceding sentences establish iterative delivery and evolving requirements via continuous feedback. The logical consequence is the ability to pivot rapidly.",
+    "category": "Verbal Ability",
+    "chapter": "Para Completion",
+    "topic": "Logical Discourse Flow",
+    "difficulty": "Medium",
+    "patternTags": [
+      "para-completion",
+      "coherence"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Cognizant"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Rearrange the sentences into a coherent paragraph:\nP: They allow models to weigh the relevance of different words regardless of their position.\nQ: Transformers have revolutionized natural language processing.\nR: This architectural innovation enables parallelized training across massive corpora.\nS: At the core of this revolution lies the self-attention mechanism.",
+    "options": [
+      "Q - S - P - R",
+      "S - P - Q - R",
+      "Q - R - S - P",
+      "P - Q - S - R"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Q introduces the overarching topic (Transformers revolutionize NLP). S specifies the core mechanism (self-attention). P describes how self-attention works ('They allow...'). R concludes with the resulting capability (parallelized training). Logical order: Q - S - P - R.",
+    "category": "Verbal Ability",
+    "chapter": "Sentence Rearrangement",
+    "topic": "Cohesion and Paragraph Synthesis",
+    "difficulty": "Medium",
+    "patternTags": [
+      "sentence-rearrangement",
+      "para-jumbles"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "TCS"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Identify the grammatically correct sentence:",
+    "options": [
+      "Neither the project manager nor the developers was available for the meeting.",
+      "Neither the project manager nor the developers were available for the meeting.",
+      "Neither the project manager or the developers was available for the meeting.",
+      "Neither the project manager nor the developers is available for the meeting."
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "In 'Neither... nor' constructions connecting singular and plural subjects, the verb agrees with the closer subject ('developers' is plural => 'were available'). Also 'nor' must pair with 'neither', not 'or'.",
+    "category": "Verbal Ability",
+    "chapter": "Grammar",
+    "topic": "Proximity Rule in Correlative Conjunctions",
+    "difficulty": "Medium",
+    "patternTags": [
+      "grammar",
+      "subject-verb-agreement"
+    ],
+    "companyPatternReferences": [
+      "Deloitte",
+      "Wipro"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Fill in the blank with the appropriate article: 'She has earned _____ Master of Science degree in Artificial Intelligence from a premier university.'",
+    "options": [
+      "a",
+      "an",
+      "the",
+      "no article required"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "'Master' starts with a consonant sound /m/, so the indefinite article 'a' is required: 'earned a Master of Science degree'.",
+    "category": "Verbal Ability",
+    "chapter": "Articles",
+    "topic": "Indefinite Article Usage with Academic Degrees",
+    "difficulty": "Easy",
+    "patternTags": [
+      "articles",
+      "grammar"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "IBM"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "In how many distinct ways can the letters of the word 'LEADER' be arranged?",
+    "options": [
+      "120",
+      "360",
+      "720",
+      "48"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The word LEADER contains 6 letters where E repeats twice. Number of distinct permutations = 6! / 2! = 720 / 2 = 360.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Permutation and Combination",
+    "topic": "Permutation with Repeated Letters",
+    "difficulty": "Easy",
+    "patternTags": [
+      "permutation-combination",
+      "arrangements"
+    ],
+    "companyPatternReferences": [
+      "TCS",
+      "Accenture"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Two fair six-sided dice are rolled simultaneously. What is the probability that the sum of the numbers appearing on the two dice is equal to 8?",
+    "options": [
+      "5/36",
+      "1/6",
+      "7/36",
+      "1/9"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Total outcomes = 6 * 6 = 36. Favorable outcomes where sum = 8: (2,6), (3,5), (4,4), (5,3), (6,2) => 5 pairs. Probability = 5/36.",
+    "category": "Quantitative Aptitude",
+    "chapter": "Probability",
+    "topic": "Sum on Two Dice",
+    "difficulty": "Medium",
+    "patternTags": [
+      "probability",
+      "dice-problems"
+    ],
+    "companyPatternReferences": [
+      "Infosys",
+      "Deloitte"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Statements:\nSome engineers are managers.\nAll managers are leaders.\nConclusions:\nI. Some engineers are leaders.\nII. All leaders are managers.",
+    "options": [
+      "Only conclusion I follows",
+      "Only conclusion II follows",
+      "Both I and II follow",
+      "Neither I nor II follows"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Some engineers are managers + All managers are leaders => The engineers who are managers must also be leaders. So 'Some engineers are leaders' (I) definitely follows. But 'All leaders are managers' (II) does not follow.",
+    "category": "Logical Reasoning",
+    "chapter": "Syllogism",
+    "topic": "Particular-Universal Syllogism",
+    "difficulty": "Easy",
+    "patternTags": [
+      "syllogism",
+      "deductive-logic"
+    ],
+    "companyPatternReferences": [
+      "Capgemini",
+      "Wipro"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Pointing towards a gentleman, Priya said, 'His only brother is the father of my daughter\\'s father.' How is the gentleman related to Priya?",
+    "options": [
+      "Father-in-law",
+      "Uncle (Paternal uncle of husband)",
+      "Brother",
+      "Maternal Uncle"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Priya's daughter's father = Priya's husband. Father of Priya's husband = Priya's father-in-law. His only brother = Brother of Priya's father-in-law, which is her husband's uncle.",
+    "category": "Logical Reasoning",
+    "chapter": "Blood Relations",
+    "topic": "Indirect Pointing Relationship",
+    "difficulty": "Medium",
+    "patternTags": [
+      "blood-relations",
+      "family-tree"
+    ],
+    "companyPatternReferences": [
+      "Cognizant",
+      "TCS"
+    ],
+    "isPublished": true
+  },
+  {
+    "question": "Find the error part: 'The team of researchers (A) / are conducting tests (B) / on the newly developed semiconductor chip (C) / without any external guidance (D).'",
+    "options": [
+      "Part A",
+      "Part B",
+      "Part C",
+      "Part D"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The grammatical subject is the singular collective noun 'The team', not 'researchers'. Therefore, the verb must be singular 'is conducting tests', not 'are conducting tests'. Part B contains the error.",
+    "category": "Verbal Ability",
+    "chapter": "Error Detection",
+    "topic": "Collective Noun Subject-Verb Agreement",
+    "difficulty": "Medium",
+    "patternTags": [
+      "grammar",
+      "error-spotting"
+    ],
+    "companyPatternReferences": [
+      "Accenture",
+      "LTIMindtree"
+    ],
+    "isPublished": true
+  }
 ];

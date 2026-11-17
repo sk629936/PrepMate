@@ -7,14 +7,26 @@ import AptitudeQuestion from '../models/AptitudeQuestion.js';
  */
 
 export const parsePdfContent = async (buffer) => {
-  const pdfData = await pdfParse(buffer);
-  const text = pdfData.text || '';
+  let text = '';
+  try {
+    const parser = new PDFParse({ data: buffer });
+    const textResult = await parser.getText();
+    await parser.destroy();
+    text = textResult?.text || '';
+  } catch (err) {
+    console.error('PDFParse extraction error:', err);
+    throw new Error(`Failed to parse PDF file: ${err.message}`);
+  }
 
   if (!text.trim()) {
-    throw new Error('No readable text could be extracted from the uploaded PDF.');
+    throw new Error('No readable text could be extracted from the uploaded PDF. Please ensure the PDF contains selectable text.');
   }
 
   const rawQuestions = extractQuestionsFromText(text);
+  if (rawQuestions.length === 0) {
+    throw new Error('Could not identify multiple-choice questions in the PDF. Please check the PDF format or enter questions manually.');
+  }
+
   const processedQuestions = [];
 
   for (const raw of rawQuestions) {
@@ -31,7 +43,7 @@ export const parsePdfContent = async (buffer) => {
       ...raw,
       normalizedQuestion: norm,
       isPossibleDuplicate: Boolean(existingInDb),
-      duplicateReason: existingInDb ? `Matches existing question ID: ${existingInDb._id}` : null,
+      duplicateReason: existingInDb ? `Matches existing question in bank (ID: ${existingInDb._id})` : null,
       needsReview: true,
       isPublished: false,
       sourceType: 'pdf-import',
@@ -64,11 +76,12 @@ function extractQuestionsFromText(fullText) {
 
     let questionText = block;
     const options = [];
-    let correctAnswerIndex = 0; // Default 0 for review screen verification
+    let correctAnswerIndex = null; // Do NOT guess answer if not detected
+    let hasDetectedAnswer = false;
     let explanation = '';
 
     if (optionsMatch.length >= 4) {
-      // We found options!
+      // Found options
       const firstOptionIndex = optionsMatch[0].index;
       questionText = block.substring(0, firstOptionIndex).trim();
 
@@ -78,11 +91,14 @@ function extractQuestionsFromText(fullText) {
       }
 
       // Check if answer is indicated in the block (e.g. "Answer: B" or "Ans: C")
-      const ansMatch = block.match(/(?:Answer|Ans|Correct Option)\s*[:\-]?\s*[\(\[]?([A-D])[\)\]\.]?/i);
+      const ansMatch = block.match(/(?:Answer|Ans|Correct Option|Key)\s*[:\-]?\s*[\(\[]?([A-D])[\)\]\.]?/i);
       if (ansMatch) {
         const letter = ansMatch[1].toUpperCase();
-        correctAnswerIndex = ['A', 'B', 'C', 'D'].indexOf(letter);
-        if (correctAnswerIndex === -1) correctAnswerIndex = 0;
+        const foundIdx = ['A', 'B', 'C', 'D'].indexOf(letter);
+        if (foundIdx !== -1) {
+          correctAnswerIndex = foundIdx;
+          hasDetectedAnswer = true;
+        }
       }
 
       // Check if explanation exists
@@ -99,12 +115,12 @@ function extractQuestionsFromText(fullText) {
       }
     }
 
-    // Default category/chapter fallback for review screen
     extracted.push({
       question: questionText.replace(/\s+/g, ' ').trim(),
       options: options.length === 4 ? options : ['Option A', 'Option B', 'Option C', 'Option D'],
-      correctAnswerIndex: correctAnswerIndex >= 0 && correctAnswerIndex <= 3 ? correctAnswerIndex : 0,
-      explanation: explanation || 'Imported via PDF. Explanation to be added during review.',
+      correctAnswerIndex: correctAnswerIndex !== null ? correctAnswerIndex : 0,
+      hasDetectedAnswer,
+      explanation: explanation || 'Imported via PDF. Verified during admin review.',
       category: 'Quantitative Aptitude',
       chapter: 'General Aptitude',
       topic: 'PDF Import',

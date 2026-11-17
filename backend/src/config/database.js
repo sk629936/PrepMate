@@ -13,11 +13,12 @@ export const connectDB = async () => {
   }
 
   try {
-    await mongoose.connect(mongoURI);
-    console.log('MongoDB connected successfully');
+    await mongoose.connect(mongoURI, {
+      dbName: 'test',
+    });
+    console.log('MongoDB Atlas connected successfully to database: test');
   } catch (error) {
-    // Log message only — never log the full URI or credentials
-    console.error('MongoDB connection error:', error.message);
+    console.error('MongoDB Atlas connection failed:', error.message);
     process.exit(1);
   }
 

@@ -31,6 +31,26 @@ function AptitudeTest() {
   const [isGenerating, setIsGenerating] = useState(false)
 
   const timerRef = useRef(null)
+  const userAnswersRef = useRef(userAnswers)
+  const questionsRef = useRef(questions)
+  const timeRemainingRef = useRef(timeRemaining)
+  const isSubmittingRef = useRef(isSubmitting)
+
+  useEffect(() => {
+    userAnswersRef.current = userAnswers
+  }, [userAnswers])
+
+  useEffect(() => {
+    questionsRef.current = questions
+  }, [questions])
+
+  useEffect(() => {
+    timeRemainingRef.current = timeRemaining
+  }, [timeRemaining])
+
+  useEffect(() => {
+    isSubmittingRef.current = isSubmitting
+  }, [isSubmitting])
 
   // Start Test Handler
   const handleStartTest = async () => {
@@ -68,8 +88,11 @@ function AptitudeTest() {
       const data = await res.json()
       if (data.success && data.test) {
         setQuestions(data.test.questions)
+        questionsRef.current = data.test.questions
         setTimeRemaining(data.test.durationSeconds)
+        timeRemainingRef.current = data.test.durationSeconds
         setUserAnswers({})
+        userAnswersRef.current = {}
         setFlaggedQuestions({})
         setCurrentIndex(0)
         setTestState('running')
@@ -81,38 +104,10 @@ function AptitudeTest() {
     }
   }
 
-  // Timer Countdown Effect
-  useEffect(() => {
-    if (testState === 'running' && timeRemaining > 0) {
-      timerRef.current = setInterval(() => {
-        setTimeRemaining((prev) => {
-          if (prev <= 1) {
-            clearInterval(timerRef.current)
-            handleAutoSubmit()
-            return 0
-          }
-          return prev - 1
-        })
-      }, 1000)
-    }
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-    }
-  }, [testState, timeRemaining])
-
-  const handleAutoSubmit = () => {
-    executeSubmit()
-  }
-
-  // Open confirmation modal
-  const handleOpenSubmitModal = () => {
-    setShowSubmitModal(true)
-  }
-
   // Submit Test Execution Handler
   const executeSubmit = async () => {
-    if (isSubmitting || testState !== 'running') return
+    if (isSubmittingRef.current) return
+    isSubmittingRef.current = true
     setIsSubmitting(true)
     setShowSubmitModal(false)
 
@@ -122,12 +117,16 @@ function AptitudeTest() {
       const token = localStorage.getItem('token')
       const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
-      const formattedAnswers = questions.map((q) => ({
+      const currentQs = questionsRef.current
+      const currentAns = userAnswersRef.current
+      const currentRem = timeRemainingRef.current
+
+      const formattedAnswers = currentQs.map((q) => ({
         questionId: q._id,
-        selectedAnswerIndex: userAnswers[q._id] !== undefined ? userAnswers[q._id] : null,
+        selectedAnswerIndex: currentAns[q._id] !== undefined ? currentAns[q._id] : null,
       }))
 
-      const timeTaken = (questions.length * 90) - timeRemaining
+      const timeTaken = Math.max((currentQs.length * 90) - currentRem, 1)
 
       const res = await fetch(`${apiBase}/api/aptitude/tests/${testConfig.testType}/submit`, {
         method: 'POST',
@@ -139,8 +138,8 @@ function AptitudeTest() {
           testType: testTitle,
           title: testTitle,
           answers: formattedAnswers,
-          timeTakenSeconds: timeTaken > 0 ? timeTaken : 1,
-          totalDurationSeconds: questions.length * 90,
+          timeTakenSeconds: timeTaken,
+          totalDurationSeconds: currentQs.length * 90,
           difficultyConfig: testConfig.difficulty,
         }),
       })
@@ -154,7 +153,36 @@ function AptitudeTest() {
       console.error('Test submission failed:', err)
     } finally {
       setIsSubmitting(false)
+      isSubmittingRef.current = false
     }
+  }
+
+  const executeSubmitRef = useRef(null)
+  executeSubmitRef.current = executeSubmit
+
+  // Timer Countdown Effect
+  useEffect(() => {
+    if (testState === 'running') {
+      timerRef.current = setInterval(() => {
+        setTimeRemaining((prev) => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current)
+            if (executeSubmitRef.current) executeSubmitRef.current()
+            return 0
+          }
+          return prev - 1
+        })
+      }, 1000)
+    }
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [testState])
+
+  // Open confirmation modal
+  const handleOpenSubmitModal = () => {
+    setShowSubmitModal(true)
   }
 
   // Toggle flag for current question
@@ -573,32 +601,42 @@ function AptitudeTest() {
                 </a>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
-                  <div className="text-xs font-semibold text-slate-500">Total Score</div>
-                  <div className="text-2xl font-bold text-slate-950 mt-1">{testResult.score} / {testResult.totalQuestions}</div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Score</div>
+                  <div className="text-xl font-bold text-slate-950 mt-1">{testResult.score} / {testResult.totalQuestions}</div>
                 </div>
 
-                <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
-                  <div className="text-xs font-semibold text-slate-500">Accuracy</div>
-                  <div className="text-2xl font-bold text-slate-950 mt-1">{testResult.accuracy}%</div>
+                <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Accuracy</div>
+                  <div className="text-xl font-bold text-slate-950 mt-1">{testResult.accuracy}%</div>
                 </div>
 
-                <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
-                  <div className="text-xs font-semibold text-slate-500">Correct Answers</div>
-                  <div className="text-2xl font-bold text-slate-950 mt-1">{testResult.correctCount}</div>
+                <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Attempted</div>
+                  <div className="text-xl font-bold text-slate-950 mt-1">{testResult.attemptedCount}</div>
                 </div>
 
-                <div className="p-4 rounded-lg border border-slate-200 bg-slate-50">
-                  <div className="text-xs font-semibold text-slate-500">Unattempted</div>
-                  <div className="text-2xl font-bold text-slate-950 mt-1">{testResult.unattemptedCount}</div>
+                <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Correct</div>
+                  <div className="text-xl font-bold text-slate-950 mt-1">{testResult.correctCount}</div>
+                </div>
+
+                <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Incorrect</div>
+                  <div className="text-xl font-bold text-slate-950 mt-1">{testResult.incorrectCount}</div>
+                </div>
+
+                <div className="p-3.5 rounded-lg border border-slate-200 bg-slate-50">
+                  <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Time Taken</div>
+                  <div className="text-xl font-bold text-slate-950 mt-1">{formatTimer(testResult.timeTakenSeconds || 0)}</div>
                 </div>
               </div>
 
-              {/* Category Breakdown Table */}
-              {testResult.categoryPerformance && (
+              {/* Category Breakdown */}
+              {testResult.categoryPerformance && Object.keys(testResult.categoryPerformance).length > 0 && (
                 <div className="space-y-3 pt-2">
-                  <h3 className="text-sm font-bold text-slate-950 uppercase tracking-wider">Category Performance</h3>
+                  <h3 className="text-xs font-bold text-slate-950 uppercase tracking-wider">Category Performance</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {Object.entries(testResult.categoryPerformance).map(([cat, perf]) => (
                       <div key={cat} className="p-3.5 rounded-lg border border-slate-200 bg-white shadow-xs">
@@ -606,6 +644,54 @@ function AptitudeTest() {
                         <div className="text-lg font-bold text-slate-950 mt-1">{perf.accuracy}%</div>
                         <div className="text-[11px] text-slate-500 mt-0.5">{perf.correct} of {perf.total} correct</div>
                       </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Topic Performance Breakdown Table */}
+              {testResult.topicPerformance && Object.keys(testResult.topicPerformance).length > 0 && (
+                <div className="space-y-3 pt-2">
+                  <h3 className="text-xs font-bold text-slate-950 uppercase tracking-wider">Topic Performance Breakdown</h3>
+                  <div className="rounded-lg border border-slate-200 overflow-hidden">
+                    <table className="w-full text-left text-xs">
+                      <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 font-semibold">
+                        <tr>
+                          <th className="p-2.5">Topic / Chapter</th>
+                          <th className="p-2.5">Attempted</th>
+                          <th className="p-2.5">Correct</th>
+                          <th className="p-2.5 text-right">Accuracy</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-100">
+                        {Object.entries(testResult.topicPerformance).map(([tName, tPerf]) => (
+                          <tr key={tName} className="hover:bg-slate-50/50">
+                            <td className="p-2.5 font-medium text-slate-900">{tName}</td>
+                            <td className="p-2.5 text-slate-600">{tPerf.attempted} / {tPerf.total}</td>
+                            <td className="p-2.5 text-slate-600">{tPerf.correct}</td>
+                            <td className="p-2.5 text-right font-bold text-slate-950">{tPerf.accuracy}%</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {/* Strong Topics */}
+              {testResult.strongTopics && testResult.strongTopics.length > 0 && (
+                <div className="p-4 rounded-lg border border-slate-200 bg-slate-50 space-y-2">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                    <span>★ Strong Topics (High Accuracy)</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {testResult.strongTopics.map((top) => (
+                      <span
+                        key={top}
+                        className="inline-flex items-center rounded border border-slate-300 bg-white px-2.5 py-1 text-xs font-semibold text-slate-800"
+                      >
+                        ✓ {top}
+                      </span>
                     ))}
                   </div>
                 </div>
@@ -625,7 +711,7 @@ function AptitudeTest() {
                       <a
                         key={top}
                         href={`/aptitude/practice?chapter=${encodeURIComponent(top)}`}
-                        className="inline-flex items-center gap-1 rounded bg-slate-950 px-3 py-1 text-xs font-semibold text-white hover:bg-slate-800 transition-colors"
+                        className="inline-flex items-center gap-1.5 rounded bg-slate-950 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800 transition-colors"
                       >
                         <span>Practice {top}</span>
                         <span>→</span>

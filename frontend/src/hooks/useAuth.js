@@ -60,11 +60,28 @@ export function useAuth() {
             setIsAuthenticated(true)
             localStorage.setItem('user', JSON.stringify(data.user))
           } else {
-            logout()
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            setUser(null)
+            setIsAuthenticated(false)
           }
+        } else if (response.status === 401 || response.status === 403 || response.status === 404) {
+          // Token is definitively invalid, expired, or user deleted
+          localStorage.removeItem('token')
+          localStorage.removeItem('user')
+          setUser(null)
+          setIsAuthenticated(false)
         } else {
-          // Token invalid, expired, or user deleted
-          logout()
+          // Server error: fallback to cached user if present
+          const cachedUser = localStorage.getItem('user')
+          if (cachedUser) {
+            try {
+              setUser(JSON.parse(cachedUser))
+              setIsAuthenticated(true)
+            } catch {
+              localStorage.removeItem('user')
+            }
+          }
         }
       } catch {
         // Network error during verification: retain cached user if available
@@ -75,10 +92,8 @@ export function useAuth() {
               setUser(JSON.parse(cachedUser))
               setIsAuthenticated(true)
             } catch {
-              logout()
+              localStorage.removeItem('user')
             }
-          } else {
-            logout()
           }
         }
       } finally {
@@ -93,7 +108,7 @@ export function useAuth() {
     return () => {
       isMounted = false
     }
-  }, [logout])
+  }, [])
 
   return { user, isLoading, isAuthenticated, logout }
 }

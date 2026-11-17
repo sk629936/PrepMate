@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import useAuth from '../hooks/useAuth'
 
 function AptitudeAdmin() {
@@ -33,7 +33,7 @@ function AptitudeAdmin() {
   const [bulkChapter, setBulkChapter] = useState('General Aptitude')
 
   // Fetch admin question bank
-  const fetchAdminQuestions = async () => {
+  const fetchAdminQuestions = useCallback(async () => {
     try {
       const token = localStorage.getItem('token')
       const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
@@ -55,13 +55,13 @@ function AptitudeAdmin() {
     } catch (err) {
       console.error('Failed to fetch admin questions:', err)
     }
-  }
+  }, [filterCategory, filterNeedsReview, searchTerm])
 
   useEffect(() => {
     if (isAuthenticated && user?.role === 'admin') {
       fetchAdminQuestions()
     }
-  }, [isAuthenticated, user, filterCategory, filterNeedsReview, searchTerm])
+  }, [isAuthenticated, user, fetchAdminQuestions])
 
   // Bulk Apply Category and Chapter to all extracted PDF items
   const handleApplyBulkTags = () => {
@@ -521,7 +521,18 @@ function AptitudeAdmin() {
                   {isExtractingPdf ? 'Extracting...' : 'Upload & Extract'}
                 </button>
               </div>
-              {pdfMessage && <p className="text-xs font-semibold text-slate-900">{pdfMessage}</p>}
+              {pdfMessage && (
+                <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-between">
+                  <p className="text-xs font-semibold text-slate-900">{pdfMessage}</p>
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('add')}
+                    className="text-xs font-bold text-slate-950 underline hover:text-slate-700"
+                  >
+                    Enter Question Manually →
+                  </button>
+                </div>
+              )}
             </form>
 
             {/* Review Screen for Extracted Questions */}
@@ -530,7 +541,7 @@ function AptitudeAdmin() {
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4">
                   <div>
                     <h3 className="text-base font-bold text-slate-950">Admin Review Screen ({candidateQuestions.length} Extracted Items)</h3>
-                    <p className="text-xs text-slate-500">Verify question text, option choices, correct answers, and explanations before publishing.</p>
+                    <p className="text-xs text-slate-500">Verify question text, option choices, correct answers, and explanations before publishing. Unverified answers require manual selection.</p>
                   </div>
                   <button type="button" onClick={handleBatchPublishPdfQuestions} className="btn-primary !min-h-9 text-xs">
                     Approve & Save All Items
@@ -572,24 +583,57 @@ function AptitudeAdmin() {
                 <div className="space-y-6 divide-y divide-slate-100">
                   {candidateQuestions.map((cq, idx) => (
                     <div key={idx} className="pt-4 space-y-3 text-xs">
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
                           <span className="font-bold text-slate-950">Item #{idx + 1}</span>
                           {cq.isPossibleDuplicate && (
-                            <span className="bg-slate-200 border border-slate-300 text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold">
-                              ⚠️ Possible Duplicate Detected
+                            <span className="bg-slate-200 border border-slate-400 text-slate-900 px-2 py-0.5 rounded text-[10px] font-bold">
+                              Possible duplicate
+                            </span>
+                          )}
+                          {!cq.hasDetectedAnswer && (
+                            <span className="bg-slate-100 border border-slate-300 text-slate-800 px-2 py-0.5 rounded text-[10px] font-bold">
+                              ⚠️ Answer Not Detected in PDF (Verification Required)
                             </span>
                           )}
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setCandidateQuestions((prev) => prev.filter((_, i) => i !== idx))
-                          }}
-                          className="text-slate-500 hover:text-slate-950 font-semibold text-xs border border-slate-300 rounded px-2 py-0.5"
-                        >
-                          Discard Item
-                        </button>
+
+                        <div className="flex items-center gap-2">
+                          {cq.isPossibleDuplicate ? (
+                            <>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setCandidateQuestions((prev) => prev.filter((_, i) => i !== idx))
+                                }}
+                                className="text-slate-950 hover:bg-slate-100 font-semibold text-xs border border-slate-300 rounded px-2.5 py-1"
+                              >
+                                Discard Duplicate
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const updated = [...candidateQuestions]
+                                  updated[idx].isPossibleDuplicate = false
+                                  setCandidateQuestions(updated)
+                                }}
+                                className="text-white bg-slate-950 hover:bg-slate-800 font-semibold text-xs rounded px-2.5 py-1"
+                              >
+                                Keep Question
+                              </button>
+                            </>
+                          ) : (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setCandidateQuestions((prev) => prev.filter((_, i) => i !== idx))
+                              }}
+                              className="text-slate-500 hover:text-slate-950 font-semibold text-xs border border-slate-300 rounded px-2 py-0.5"
+                            >
+                              Discard Item
+                            </button>
+                          )}
+                        </div>
                       </div>
 
                       <div>

@@ -6,19 +6,25 @@ import { CATEGORIES, QUANTITATIVE_CHAPTERS, LOGICAL_CHAPTERS, VERBAL_CHAPTERS, D
 import { seedQuestions } from '../data/seedAptitudeQuestions.js';
 
 /**
- * Ensures seed questions exist in DB. If DB has fewer questions than the seed bank,
- * inserts only the missing ones (based on exact question text matching).
+ * Ensures seed questions exist in DB.
+ * Inserts any seed questions that are not yet in the DB and computes normalizedQuestion.
  */
-const ensureSeedQuestions = async () => {
-  const count = await AptitudeQuestion.countDocuments();
-  if (count < seedQuestions.length) {
-    // Find which seed questions are not yet in DB
-    const existingTexts = await AptitudeQuestion.distinct('question');
-    const existingSet = new Set(existingTexts);
-    const toInsert = seedQuestions.filter((q) => !existingSet.has(q.question));
-    if (toInsert.length > 0) {
-      await AptitudeQuestion.insertMany(toInsert, { ordered: false });
-    }
+export const ensureSeedQuestions = async () => {
+  const existingTexts = await AptitudeQuestion.distinct('question');
+  const existingSet = new Set(existingTexts);
+  const toInsert = seedQuestions
+    .filter((q) => !existingSet.has(q.question))
+    .map((q) => ({
+      ...q,
+      normalizedQuestion: q.question
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    }));
+
+  if (toInsert.length > 0) {
+    await AptitudeQuestion.insertMany(toInsert, { ordered: false });
   }
 };
 
@@ -299,35 +305,84 @@ export const generateTestSession = async (req, res) => {
   const { id } = req.params;
   const { questionCount = 20, difficulty = 'Mixed', category = 'All' } = req.query;
 
-  const filter = { isPublished: true };
-  if (category && category !== 'All' && category !== 'Mixed') {
-    filter.category = category;
-  }
-  if (difficulty && difficulty !== 'Mixed') {
-    filter.difficulty = difficulty;
-  }
-
   const limit = Math.min(Math.max(Number(questionCount), 5), 50);
 
-  // Fetch candidate questions
-  let candidateQuestions = await AptitudeQuestion.find(filter).lean();
+  const isMixedOrPlacement =
+    id === 'placement-test' ||
+    id === 'mixed-test' ||
+    category === 'All' ||
+    category === 'Mixed' ||
+    !category;
 
-  if (candidateQuestions.length < limit) {
-    // Fallback if strict filter yields fewer questions
-    candidateQuestions = await AptitudeQuestion.find({ isPublished: true }).lean();
+  let selectedQuestions = [];
+
+  if (isMixedOrPlacement) {
+    // Section F Requirement: Mixed/Placement tests MUST combine Quant + Logical + Verbal
+    const quantCount = Math.floor(limit / 3);
+    const logicalCount = Math.floor(limit / 3);
+    const verbalCount = limit - quantCount - logicalCount;
+
+    const baseFilter = { isPublished: true };
+    if (difficulty && difficulty !== 'Mixed') {
+      baseFilter.difficulty = difficulty;
+    }
+
+    const [quantPool, logicalPool, verbalPool] = await Promise.all([
+      AptitudeQuestion.find({ ...baseFilter, category: 'Quantitative Aptitude' }).lean(),
+      AptitudeQuestion.find({ ...baseFilter, category: 'Logical Reasoning' }).lean(),
+      AptitudeQuestion.find({ ...baseFilter, category: 'Verbal Ability' }).lean(),
+    ]);
+
+    const shuffledQuant = quantPool.sort(() => 0.5 - Math.random()).slice(0, quantCount);
+    const shuffledLogical = logicalPool.sort(() => 0.5 - Math.random()).slice(0, logicalCount);
+    const shuffledVerbal = verbalPool.sort(() => 0.5 - Math.random()).slice(0, verbalCount);
+
+    selectedQuestions = [...shuffledQuant, ...shuffledLogical, ...shuffledVerbal].sort(
+      () => 0.5 - Math.random()
+    );
+
+    // If any difficulty filter was strict and yielded fewer items, backfill from other published questions
+    if (selectedQuestions.length < limit) {
+      const selectedIds = new Set(selectedQuestions.map((q) => q._id.toString()));
+      const fallback = await AptitudeQuestion.find({
+        isPublished: true,
+        _id: { $nin: Array.from(selectedIds) },
+      })
+        .limit(limit - selectedQuestions.length)
+        .lean();
+      selectedQuestions.push(...fallback);
+    }
+  } else {
+    // Single category test
+    const categoryName =
+      category === 'quant-test' || id === 'quant-test'
+        ? 'Quantitative Aptitude'
+        : category === 'logical-test' || id === 'logical-test'
+        ? 'Logical Reasoning'
+        : category === 'verbal-test' || id === 'verbal-test'
+        ? 'Verbal Ability'
+        : category;
+
+    const singleFilter = { isPublished: true, category: categoryName };
+    if (difficulty && difficulty !== 'Mixed') {
+      singleFilter.difficulty = difficulty;
+    }
+
+    let candidateQuestions = await AptitudeQuestion.find(singleFilter).lean();
+    if (candidateQuestions.length < limit) {
+      candidateQuestions = await AptitudeQuestion.find({ isPublished: true, category: categoryName }).lean();
+    }
+    selectedQuestions = candidateQuestions.sort(() => 0.5 - Math.random()).slice(0, limit);
   }
 
-  // Shuffle candidate questions
-  const shuffled = candidateQuestions.sort(() => 0.5 - Math.random()).slice(0, limit);
-
-  // Strip answers
-  const safeQuestions = shuffled.map((q) => {
-    const { correctAnswerIndex, explanation, normalizedQuestion, ...safe } = q;
+  // Strip answers so candidates cannot inspect network tab to cheat
+  const safeQuestions = selectedQuestions.map((q) => {
+    const { correctAnswerIndex, explanation, normalizedQuestion, companyPatternReferences, ...safe } = q;
     return safe;
   });
 
   // Calculate timer duration: 1.5 minutes per question
-  const durationSeconds = limit * 90;
+  const durationSeconds = safeQuestions.length * 90;
 
   res.status(200).json({
     success: true,
